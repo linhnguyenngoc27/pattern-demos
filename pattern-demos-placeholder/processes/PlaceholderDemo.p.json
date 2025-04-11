@@ -1,0 +1,48 @@
+{
+  "$schema" : "https://json-schema.axonivy.com/process/12.0.0/process.json",
+  "id" : "1956FF82C06EDA13",
+  "config" : {
+    "data" : "com.axonivy.demo.patterndemos.placeholder.PlaceholderDemoData"
+  },
+  "elements" : [ {
+      "id" : "f0",
+      "type" : "RequestStart",
+      "name" : "Placeholder Replacement",
+      "config" : {
+        "signature" : "placeholderDemo",
+        "request" : {
+          "name" : "Placeholder Replacement",
+          "description" : "Show a simple placeholder replacememt solution."
+        }
+      },
+      "tags" : [
+        "demo"
+      ],
+      "visual" : {
+        "at" : { "x" : 96, "y" : 64 }
+      },
+      "connect" : [
+        { "id" : "f2", "to" : "f3" }
+      ]
+    }, {
+      "id" : "f1",
+      "type" : "TaskEnd",
+      "visual" : {
+        "at" : { "x" : 360, "y" : 64 },
+        "labelOffset" : { "x" : 13, "y" : 33 }
+      }
+    }, {
+      "id" : "f3",
+      "type" : "DialogCall",
+      "name" : "Placeholder Demo",
+      "config" : {
+        "dialog" : "com.axonivy.demo.patterndemos.placeholder.PlaceholderDemo:start()"
+      },
+      "visual" : {
+        "at" : { "x" : 232, "y" : 64 }
+      },
+      "connect" : [
+        { "id" : "f4", "to" : "f1", "color" : "default" }
+      ]
+    } ]
+}

@@ -1,0 +1,41 @@
+Dialogs:
+  com:
+    axonivy:
+      demo:
+        patterndemos:
+          validation:
+            BasicValidation:
+              apply: Apply
+              cancel: Cancel
+              description: Example of basic client side validation for dialogs with simple input fields.
+              firstName: First name
+              lastName: Last name
+              title: Basic validation
+            ServerSideValidation:
+              apply: Apply (after validation)
+              buttonsDescription: |
+                <p><b>Apply</b> accepts the field values and triggers the complete validation. This typically results in a save operation, continues the process and ensures that all required values have been filled correctly.<p/>
+                <p><b>Intermdiate Save</b> accepts the field values but does not validate them. This can be useful in large dialogs to save the intermediate values without being forced to fill in all values correctly. The process typically remains in the current task.</p>
+                <p><b>Cancel</b> does not perform a validation and ignores field values.<p/>
+              cancel: Cancel
+              description: Example of server side validation.
+              fromDate: From
+              fromToDescription: |+
+                For an example of dual-field validation using two datepickers, the system will first perform client-side validation to check if both the 'From' and 'To' dates are selected (empty validation), then perform server-side validation to ensure the 'From' date is before the 'To' date (date order validation). Please select a 'From' date and a 'To' date for the event. If you don’t fill both fields, validation will be triggered as soon as you click the 'Validate' button.
+
+              intermediate: Intermediate Save (without validation)
+              startDate: Start date
+              startDateDescription: After a single-field validation a validator is used to check that the start-date is in the future. After that, a server-side, model-based validation checks that the "to" date is after the "from" date.
+              title: Server side validation
+              toDate: To
+Processes:
+  Descriptions:
+    basicValidationDemo: Validate single fields.
+    serverSideValidationDemo: Validate multiple fields server-side.
+  Names:
+    basicValidationDemo: Basic Validation
+    serverSideValidationDemo: Server Side Validation
+Validation:
+  dateNotInFuture: '{0}: Date must be in the future.'
+  fromAfterToDate: From date ({0}) is after To date ({1}).
+  isRequired: '{0}: Value is required'

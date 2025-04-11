@@ -1,0 +1,29 @@
+Categories:
+  ADMIN:
+    name: Administration
+Dialogs:
+  com:
+    axonivy:
+      demo:
+        patterndemos:
+          job:
+            JobBackgroundNote:
+              details: Drücken Sie ''Start'' um den Job ''{0}'' im Hintergrund auszuführen. Sobald er beendet ist, erhält der Administrator eine Aufgabe mit den technischen Details der Ausführung.
+              lockedNote: Der Job ''{0}'' ist gesperrt und läuft möglicherweise bereits. Um ihn dennoch auszuführen, muss er zuerst entsperrt werden.
+              start: Starten
+              title: Job Notiz
+              unlock: Entsperren
+Labels:
+  cancel: Abbrechen
+Processes:
+  Descriptions:
+    backgroundJob: Technische Aufgabe zur Ausführung eines Hintergrundjobs
+    checkJobResult: Überprüfen Sie das Ergebnis des Jobs ''{0}'' mit dem Gesamtstatus ''{1}''
+  Names:
+    backgroundJob: Background job ''{0}''
+    checkJobResult: Überprüfen Sie das Ergebnis des Jobs ''{0}'' mit dem Gesamtstatus ''{1}''.
+Tasks:
+  Description:
+    checkJobResult: Überprüfen Sie das Resultat von Job ''{0}'' mit dem Gesamtstatus ''{1}''
+  Names:
+    checkJobResult: Überprüfen Sie das Resultat von Job ''{0}'' mit dem Gesamtstatus ''{1}''.

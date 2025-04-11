@@ -1,0 +1,91 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:f="http://xmlns.jcp.org/jsf/core"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+	xmlns:ic="http://ivyteam.ch/jsf/component"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:pe="http://primefaces.org/ui/extensions">
+<h:body>
+	<ui:composition template="/layouts/frame-10-full-width.xhtml">
+		<ui:define name="title">Placeholder Demo</ui:define>
+		<ui:define name="content">
+
+			<h:form id="form">
+				<div class="ui-fluid">
+					<div class="grid">
+						<div class="col-12 md:col-12 lg:col-12">
+							<h2>Placeholder Demo</h2>
+						</div>
+					</div>
+					<div class="grid">
+						<div class="col-12 md:col-12 lg:col-12">
+							This demo shows a simple way to implement place-holders,
+							marked by {{ }} in texts. Pressing the "Replace" button will
+							take the template and replace the given place-holders with
+							text. You can play around with the example and change text
+							or place-holders. 
+						</div>
+					</div>
+					<div class="grid">
+						<div class="col-12 md:col-12 lg:col-12">
+							<h3>Template</h3>
+						</div>
+					</div>
+					<div class="grid">
+						<div class="col-12 md:col-12 lg:col-12">
+							<p:inputTextarea value="#{data.ctrl.template}" />
+						</div>
+					</div>
+
+					<div class="grid">
+						<div class="col-12 md:col-12 lg:col-12">
+							<h3>Replacement Values</h3>
+						</div>
+					</div>
+
+					<div class="grid">
+						<div class="col-12 md:col-12 lg:col-12">
+							<p:dataTable var="entry" value="#{data.ctrl.entries}">
+								<p:column headerText="Placeholder">
+									<h:inputText value="#{entry.key}" />
+								</p:column>
+								<p:column headerText="Replacement">
+									<h:inputText value="#{entry.value}" />
+								</p:column>
+							</p:dataTable>
+						</div>
+					</div>
+
+					<div class="grid justify-content-end">
+						<div class="col-12 md:col-2 lg:col-2">
+							<p:commandButton value="Replace" actionListener="#{data.ctrl.replace}" update="form" />
+						</div>
+					</div>
+
+					<div class="grid">
+						<div class="col-12 md:col-12 lg:col-12">
+							<h3>Text</h3>
+						</div>
+					</div>
+					<div class="grid">
+						<div class="col-12 md:col-12 lg:col-12">
+							<pre>
+								<h:outputText id="text" value="#{data.ctrl.text}" />
+							</pre>
+						</div>
+					</div>
+
+					<div class="grid justify-content-end">
+						<div class="col-12 md:col-2 lg:col-2">
+							<p:commandButton actionListener="#{logic.finish}"
+								value="Finish" update="form" />
+						</div>
+					</div>
+				</div>
+			</h:form>
+
+		</ui:define>
+	</ui:composition>
+</h:body>
+
+</html>

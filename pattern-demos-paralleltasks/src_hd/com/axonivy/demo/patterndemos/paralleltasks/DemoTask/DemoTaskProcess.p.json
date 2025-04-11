@@ -1,0 +1,76 @@
+{
+  "$schema" : "https://json-schema.axonivy.com/process/12.0.0/process.json",
+  "id" : "195805DE084FD874",
+  "kind" : "HTML_DIALOG",
+  "config" : {
+    "data" : "com.axonivy.demo.patterndemos.paralleltasks.DemoTask.DemoTaskData"
+  },
+  "elements" : [ {
+      "id" : "f0",
+      "type" : "HtmlDialogStart",
+      "name" : "start(DemoData)",
+      "config" : {
+        "signature" : "start",
+        "input" : {
+          "params" : [
+            { "name" : "demoData", "type" : "com.axonivy.demo.patterndemos.paralleltasks.pojos.DemoData", "desc" : "" }
+          ],
+          "map" : {
+            "out.demoData" : "param.demoData"
+          }
+        },
+        "guid" : "195805DE08438CF6"
+      },
+      "visual" : {
+        "at" : { "x" : 96, "y" : 64 }
+      },
+      "connect" : [
+        { "id" : "f2", "to" : "f1" }
+      ]
+    }, {
+      "id" : "f1",
+      "type" : "HtmlDialogEnd",
+      "visual" : {
+        "at" : { "x" : 224, "y" : 64 },
+        "labelOffset" : { "x" : 10, "y" : 30 }
+      }
+    }, {
+      "id" : "f9",
+      "type" : "HtmlDialogEventStart",
+      "name" : "done",
+      "config" : {
+        "guid" : "1958071D26F1C2D2"
+      },
+      "visual" : {
+        "at" : { "x" : 96, "y" : 168 }
+      },
+      "connect" : [
+        { "id" : "f4", "to" : "f5" }
+      ]
+    }, {
+      "id" : "f3",
+      "type" : "HtmlDialogExit",
+      "visual" : {
+        "at" : { "x" : 352, "y" : 168 },
+        "labelOffset" : { "x" : 10, "y" : 30 }
+      }
+    }, {
+      "id" : "f5",
+      "type" : "Script",
+      "name" : "Finish the task",
+      "config" : {
+        "output" : {
+          "code" : [
+            "import com.axonivy.demo.patterndemos.paralleltasks.service.ParallelTasksDemoService;",
+            "ParallelTasksDemoService.get().finishTask(in.demoData);"
+          ]
+        }
+      },
+      "visual" : {
+        "at" : { "x" : 224, "y" : 168 }
+      },
+      "connect" : [
+        { "id" : "f6", "to" : "f3", "color" : "default" }
+      ]
+    } ]
+}

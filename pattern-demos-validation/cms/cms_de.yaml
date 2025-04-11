@@ -1,0 +1,40 @@
+Dialogs:
+  com:
+    axonivy:
+      demo:
+        patterndemos:
+          validation:
+            BasicValidation:
+              apply: Übernehmen
+              cancel: Abbrechen
+              description: Grundlegende clientseitige Validierung für Dialog mit einfachen Eingabefeldern.
+              firstName: Vorname
+              lastName: Nachname
+              title: Basis-Validierung
+            ServerSideValidation:
+              apply: Übernehmen (nach Validierung)
+              buttonsDescription: "<p><b>Übernehmen</b> übernimmt die Feldwerte und löst die komplette Validierung aus. Dies führt typischerweise zu einer Speicheroperation und zum Weitergehen im Prozess und stellt sicher, dass alle benötigten Werte korrekt befüllt wurden.<p/>\n<p><b>Zwischenspeichern</b>\
+                \ übernimmt die Feldwerte, aber führt keine Validierung durch. Dies kann in großen Dialogen hilfreich sein, um den Zwischenstand festzuhalten ohne gezwungen zu sein, bereits alle Werte korrekt befüllen zu müssen. Der Prozess bleibt in diesem Fall typischwerweise im aktuellen Task.</p>\n\
+                <p><b>Abbrechen</b> führt keine Validierung durch und übernimmt die Feldwerte nicht.<p/>\n\r"
+              cancel: Abbrechen
+              description: Beispiel für serverseitige Validierung.
+              fromDate: Von
+              fromToDescription: Für ein Beispiel der Zweifeld-Validierung mit zwei Datumswählern führt das System zunächst eine clientseitige Validierung durch, um zu prüfen, ob sowohl das 'Von'- als auch das 'Bis'-Datum ausgewählt wurden (Leerfeldvalidierung), und führt dann eine serverseitige Validierung
+                durch, um sicherzustellen, dass das 'Von'-Datum vor dem 'Bis'-Datum liegt (Datumsreihenfolgevalidierung). Wählen Sie bitte ein 'Von'-Datum und ein 'Bis'-Datum für das Ereignis aus. Wenn Sie nicht beide Felder ausfüllen, wird die Validierung ausgelöst, sobald Sie auf die Schaltfläche 'Validieren'
+                klicken.
+              intermediate: Zwischenspeichern (ohne Validierung)
+              startDate: Startdatum
+              startDateDescription: Nach einer einfachen Feldprüfung wird ein Validator eingesetzt um zu prüfen, ob das Startdatum in der Zukunft liegt. Danach wird die serverseitige, modellbasierte Validierung der beiden Datumsfelder durchgeführt ("Bis" Datum muss nach "Von" Datum liegen).
+              title: Serverseitige Validierung
+              toDate: Bis
+Processes:
+  Descriptions:
+    basicValidationDemo: Validiert einzelne Felder.
+    serverSideValidationDemo: Validiert Feldzusammenhänge serverseitig.
+  Names:
+    basicValidationDemo: Einfache Validierung
+    serverSideValidationDemo: Serverseitige Validierung
+Validation:
+  dateNotInFuture: '{0}: Datum muss in der Zukunft liegen.'
+  fromAfterToDate: Von-Datum ({0}) liegt nach dem Bis-Datum ({1}).
+  isRequired: '{0}: Der Wert darf nicht leer sein'

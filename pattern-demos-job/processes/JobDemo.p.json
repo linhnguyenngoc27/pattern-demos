@@ -1,0 +1,102 @@
+{
+  "$schema" : "https://json-schema.axonivy.com/process/12.0.0/process.json",
+  "id" : "195475D6EEE5029A",
+  "config" : {
+    "data" : "com.axonivy.demo.patterndemos.job.JobDemoData"
+  },
+  "elements" : [ {
+      "id" : "f3",
+      "type" : "ProgramStart",
+      "name" : "Automatic job run",
+      "config" : {
+        "javaClass" : "ch.ivyteam.ivy.process.eventstart.beans.TimerBean",
+        "userConfig" : {
+          "time" : "ivy.var.com_axonivy_demo_patterndemos_job_demoJobTimerConfiguration"
+        },
+        "link" : "eventLink.ivp"
+      },
+      "visual" : {
+        "at" : { "x" : 96, "y" : 80 },
+        "labelOffset" : { "x" : 9, "y" : 33 }
+      },
+      "connect" : [
+        { "id" : "f2", "to" : "f1", "via" : [ { "x" : 144, "y" : 80 }, { "x" : 160, "y" : 112 } ] }
+      ]
+    }, {
+      "id" : "f0",
+      "type" : "RequestStart",
+      "name" : "Manual job run",
+      "config" : {
+        "signature" : "manualJobRunDemo",
+        "input" : {
+          "map" : {
+            "out.manual" : "true"
+          }
+        },
+        "request" : {
+          "name" : "Manual job run",
+          "description" : "Show how to start a job manually."
+        }
+      },
+      "tags" : [
+        "demo"
+      ],
+      "visual" : {
+        "at" : { "x" : 96, "y" : 144 },
+        "labelOffset" : { "x" : 1, "y" : 33 }
+      },
+      "connect" : [
+        { "id" : "f4", "to" : "f1", "via" : [ { "x" : 144, "y" : 144 }, { "x" : 160, "y" : 112 } ] }
+      ]
+    }, {
+      "id" : "f1",
+      "type" : "SubProcessCall",
+      "name" : [
+        "Automatic Processes/Job",
+        "runJob"
+      ],
+      "config" : {
+        "processCall" : "Functional Processes/Job:runJob(String,Boolean)",
+        "call" : {
+          "map" : {
+            "param.jobName" : "com.axonivy.demo.patterndemos.job.service.DemoJobService.DEMO_JOB_NAME",
+            "param.manual" : "in.manual"
+          }
+        }
+      },
+      "visual" : {
+        "at" : { "x" : 272, "y" : 112 }
+      },
+      "connect" : [
+        { "id" : "f6", "to" : "f5" }
+      ]
+    }, {
+      "id" : "f5",
+      "type" : "TaskEnd",
+      "visual" : {
+        "at" : { "x" : 400, "y" : 112 },
+        "labelOffset" : { "x" : 13, "y" : 33 }
+      }
+    }, {
+      "id" : "f13",
+      "type" : "ProcessAnnotation",
+      "name" : [
+        "This demo initiates a subprocess to manage the handling of a demo job. ",
+        "",
+        "There are two ways to trigger the job. ",
+        "",
+        "The Automatic Job Run is triggered by a TimerBean which is configured in the global variable demoJobTimerConfiguration. In case of an automatic start, an AdminTask will be generated, if the job result is not OK.",
+        "",
+        "The Manual job run can be used for manual starts. In case of a manual start the result of the job will always be available in an AdminTask.",
+        "",
+        "In both cases the job would be influence by the global variable forceError. When set to true - per default then there will be simulated error by the job.",
+        "",
+        "To use this pattern, copy the Job sub-process to your project, adapt roles and",
+        "messages if needed and call it for all the jobs in the project."
+      ],
+      "visual" : {
+        "at" : { "x" : 784, "y" : 144 },
+        "size" : { "width" : 518, "height" : 254 }
+      }
+    } ]
+}

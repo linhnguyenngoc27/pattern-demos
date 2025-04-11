@@ -1,0 +1,11 @@
+{
+  "$schema" : "https://json-schema.axonivy.com/data-class/12.0.0/data-class.json",
+  "simpleName" : "DemoTaskData",
+  "namespace" : "com.axonivy.demo.patterndemos.paralleltasks.DemoTask",
+  "isBusinessCaseData" : false,
+  "fields" : [ {
+    "name" : "demoData",
+    "type" : "com.axonivy.demo.patterndemos.paralleltasks.pojos.DemoData",
+    "modifiers" : [ "PERSISTENT" ]
+  } ]
+}

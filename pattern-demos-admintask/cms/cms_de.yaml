@@ -1,0 +1,28 @@
+Categories:
+  ADMIN:
+    name: Administration
+Dialogs:
+  com:
+    axonivy:
+      demo:
+        patterndemos:
+          admintask:
+            AdminTask:
+              checkLater: Später prüfen
+              checkLaterTooltip: Aufgabe behalten und später prüfen
+              description: Bitte führen Sie die Aufgabe durch.
+              details: Details
+              done: Erledigt
+              doneTooltip: Erledigt, im Prozess weitergehen
+              ignore: Ignorieren
+              ignoreConfirmatationHeader: Weiter?
+              ignoreConfirmatationMessage: Wollen Sie wirklich ignorieren und im Prozess weitergehen?
+              ignoreTooltip: Ignorieren und im Prozess weitergehen
+              pageTitle: Admin Task
+              retry: Erneut versuchen
+              retryTooltip: Operation erneut durchführen
+              task: Aufgabe
+              title: Admin Task
+Labels:
+  'no': Nein
+  'yes': Ja

@@ -1,0 +1,6 @@
+# yaml-language-server: $schema=https://json-schema.axonivy.com/app/12.0.0/databases.json
+Databases:
+  pattern-demos-lock:
+    Url: jdbc:hsqldb:mem:pattern_demos_lock
+    Driver: org.hsqldb.jdbc.JDBCDriver
+    Password: ${decrypt:}

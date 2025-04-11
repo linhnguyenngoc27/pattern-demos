@@ -1,0 +1,49 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:f="http://xmlns.jcp.org/jsf/core"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+	xmlns:ic="http://ivyteam.ch/jsf/component"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:pe="http://primefaces.org/ui/extensions">
+<h:body>
+	<ui:composition template="/layouts/frame-10-full-width.xhtml">
+		<ui:define name="title">Demo Task</ui:define>
+		<ui:define name="content">
+
+			<h:form id="form">
+				<div class="ui-fluid">
+					<div class="grid">
+						<div class="col-12 md:col-12 lg:col-12">
+							<h2>Demo Task <h:outputText value="#{data.demoData.taskNumber}"/> of Parallel Task Demo</h2>
+						</div>
+						<div class="col-12 md:col-12 lg:col-12">
+							This is one of the parallel tasks created by the demo. You can
+							proceed complete it or simply close this dialog and continue
+							later. Once all parallel tasks in this process have been
+							completed, the main process can continue.
+						</div>
+						<div class="col-12 md:col-12 lg:col-12">
+							<small>The unique id of this task group is #{data.demoData.uniqueId}.</small> 
+						</div>
+					</div>
+					<div class="grid justify-content-end">
+						<div class="col-12 md:col-2 lg:col-2">
+							<p:commandButton id="done" actionListener="#{logic.done}"
+								value="Complete" icon="fa fa-check" update="form" />
+						</div>
+						<div class="col-12 md:col-2 lg:col-2">
+							<p:commandButton id="close"
+								actionListener="#{ivyWorkflowView.cancelToHome()}"
+								immediate="true" value="Cancel, do later" update="form"
+								icon="fa-solid fa-times">
+							</p:commandButton>
+						</div>
+					</div>
+				</div>
+			</h:form>
+
+		</ui:define>
+	</ui:composition>
+</h:body>
+
+</html>

@@ -1,0 +1,11 @@
+{
+  "$schema" : "https://json-schema.axonivy.com/data-class/12.0.0/data-class.json",
+  "simpleName" : "ChildData",
+  "namespace" : "com.axonivy.demo.patterndemos.components.Child",
+  "isBusinessCaseData" : false,
+  "fields" : [ {
+    "name" : "ctrl",
+    "type" : "com.axonivy.demo.patterndemos.ui.components.ChildCtrl",
+    "modifiers" : [ "PERSISTENT" ]
+  } ]
+}

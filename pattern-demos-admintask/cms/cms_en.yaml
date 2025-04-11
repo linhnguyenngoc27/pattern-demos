@@ -1,0 +1,28 @@
+Categories:
+  ADMIN:
+    name: Administration
+Dialogs:
+  com:
+    axonivy:
+      demo:
+        patterndemos:
+          admintask:
+            AdminTask:
+              checkLater: Check later
+              checkLaterTooltip: Keep this task to check later
+              description: Please execute the task.
+              details: Details
+              done: Done
+              doneTooltip: Done, continue process
+              ignore: Ignore
+              ignoreConfirmatationHeader: Continue?
+              ignoreConfirmatationMessage: Do you really want to ignore and continue the process?
+              ignoreTooltip: Ignore and continue process
+              pageTitle: Admin Task
+              retry: Retry
+              retryTooltip: Retry the operation
+              task: Task
+              title: Admin Task
+Labels:
+  'no': 'No'
+  'yes': 'Yes'

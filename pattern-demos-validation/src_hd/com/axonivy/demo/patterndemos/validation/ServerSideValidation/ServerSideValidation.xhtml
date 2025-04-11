@@ -1,0 +1,114 @@
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:f="http://xmlns.jcp.org/jsf/core"
+  xmlns:h="http://xmlns.jcp.org/jsf/html" xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+  xmlns:ic="http://ivyteam.ch/jsf/component" xmlns:p="http://primefaces.org/ui"
+  xmlns:pe="http://primefaces.org/ui/extensions">
+<h:body>
+  <ui:composition template="/layouts/frame-10-full-width.xhtml">
+    <ui:define name="title">#{ivy.cms.co('/Dialogs/com/axonivy/demo/patterndemos/validation/BasicValidation/title')}</ui:define>
+    <ui:define name="content">
+
+      <h:form id="form">
+				<p:growl id="growl"/>
+			
+				<div class="ui-fluid">
+					<div class="grid">
+						<div class="col-12 md:col-12 lg:col-12">
+							<h2><h:outputText value="#{ivy.cms.co('/Dialogs/com/axonivy/demo/patterndemos/validation/ServerSideValidation/title')}" /></h2>
+						</div>
+					</div>
+					<div class="grid">
+						<div class="col-12 md:col-12 lg:col-12">
+							<h:outputText value="#{ivy.cms.co('/Dialogs/com/axonivy/demo/patterndemos/validation/ServerSideValidation/description')}" />
+						</div>
+					</div>
+					<p:spacer height="1em"/>
+					<div class="grid">
+						<div class="col-12 md:col-12 lg:col-12">
+							<h:outputText value="#{ivy.cms.co('/Dialogs/com/axonivy/demo/patterndemos/validation/ServerSideValidation/startDateDescription')}" />
+						</div>
+					</div>
+					<p:spacer height="1em"/>
+					<div class="grid">
+						<div class="col-12 md:col-6 lg:col-2">
+							<p:outputLabel for="startDate" value="#{ivy.cms.co('/Dialogs/com/axonivy/demo/patterndemos/validation/ServerSideValidation/startDate')}" indicateRequired="true" />
+						</div>
+						<div class="col-12 md:col-6 lg:col-4">
+							<p:datePicker id="startDate" showOnFocus="false" value="#{data.ctrl.startDate}" placeholder="#{constants['DATE_PLACEHOLDER']}"
+								showIcon="true" pattern="#{constants['DATE_PATTERN']}" yearRange="#{constants['DATE_YEAR_RANGE']}" yearNavigator="true" 
+								required="#{not param['isValidationDisabled']}"
+								requiredMessage="#{messages.requiredMessage('/Dialogs/com/axonivy/demo/patterndemos/validation/ServerSideValidation/startDate')}">
+								<f:validator validatorId="futureDateValidator" disabled="#{param['isValidationDisabled']}" />
+							</p:datePicker>
+						</div>
+					</div>
+					<p:spacer height="1em"/>
+					<div class="grid">
+						<div class="col-12 md:col-12 lg:col-12">
+							<h:outputText value="#{ivy.cms.co('/Dialogs/com/axonivy/demo/patterndemos/validation/ServerSideValidation/fromToDescription')}" />
+						</div>
+					</div>
+					<p:spacer height="1em"/>
+					<div class="grid">
+						<div class="col-12 md:col-6 lg:col-2">
+							<p:outputLabel for="fromDate" value="#{ivy.cms.co('/Dialogs/com/axonivy/demo/patterndemos/validation/ServerSideValidation/fromDate')}" indicateRequired="true" />
+						</div>
+						<div class="col-12 md:col-6 lg:col-4">
+							<p:datePicker id="fromDate" showOnFocus="false" value="#{data.ctrl.fromDate}" placeholder="#{constants['DATE_PLACEHOLDER']}"
+								showIcon="true" pattern="#{constants['DATE_PATTERN']}" yearRange="#{constants['DATE_YEAR_RANGE']}" yearNavigator="true" 
+								required="#{not param['isValidationDisabled']}"
+								requiredMessage="#{messages.requiredMessage('/Dialogs/com/axonivy/demo/patterndemos/validation/ServerSideValidation/fromDate')}">
+								<!-- Write values into model so the server side validation can check. -->
+								<p:ajax process="@this"/>
+							</p:datePicker>
+						</div>
+					</div>
+					<div class="grid">
+						<div class="col-12 md:col-6 lg:col-2">
+							<p:outputLabel for="toDate" value="#{ivy.cms.co('/Dialogs/com/axonivy/demo/patterndemos/validation/ServerSideValidation/toDate')}" indicateRequired="true" />
+						</div>
+						<div class="col-12 md:col-6 lg:col-4">
+							<p:datePicker id="toDate" showOnFocus="false" value="#{data.ctrl.toDate}" placeholder="#{constants['DATE_PLACEHOLDER']}"
+								showIcon="true" pattern="#{constants['DATE_PATTERN']}" yearRange="#{constants['DATE_YEAR_RANGE']}" yearNavigator="true" 
+								required="#{not param['isValidationDisabled']}"
+								requiredMessage="#{messages.requiredMessage('/Dialogs/com/axonivy/demo/patterndemos/validation/ServerSideValidation/toDate')}">
+								<!-- Write values into model so the server side validation can check. -->
+								<p:ajax process="@this"/>
+							</p:datePicker>
+						</div>
+					</div>
+					<p:spacer height="1em"/>
+					<div class="grid">
+						<div class="col-12 md:col-12 lg:col-12">
+							<h:outputText value="#{ivy.cms.co('/Dialogs/com/axonivy/demo/patterndemos/validation/ServerSideValidation/buttonsDescription')}" escape="false"/>
+						</div>
+					</div>
+					<div class="grid justify-content-end">
+						<div class="col-12 md:col-2 lg:col-2">
+							<p:commandButton id="apply" value="#{ivy.cms.co('/Dialogs/com/axonivy/demo/patterndemos/validation/BasicValidation/apply')}" icon="fa fa-check" update="form" />
+						</div>
+						<div class="col-12 md:col-2 lg:col-2">
+							<p:commandButton id="intermediate" value="#{ivy.cms.co('/Dialogs/com/axonivy/demo/patterndemos/validation/ServerSideValidation/intermediate')}" icon="fa fa-check" update="form" >
+								<f:param name="isValidationDisabled" value="#{true}" />
+							</p:commandButton>
+						</div>
+						<div class="col-12 md:col-2 lg:col-2">
+							<p:commandButton id="close"
+								actionListener="#{ivyWorkflowView.cancelToHome()}"
+								immediate="true" value="#{ivy.cms.co('/Dialogs/com/axonivy/demo/patterndemos/validation/ServerSideValidation/cancel')}"
+								update="form" icon="fa-solid fa-times">
+							</p:commandButton>
+						</div>
+					</div>
+				</div>
+
+				<h:inputHidden>
+					<f:validator validatorId="checkFromToDates" disabled="#{param['isValidationDisabled']}" />
+					<f:attribute name="bean" value="#{data.ctrl}" />
+				</h:inputHidden>
+
+			</h:form>
+    </ui:define>
+  </ui:composition>
+</h:body>
+
+</html>

@@ -1,0 +1,11 @@
+# yaml-language-server: $schema=https://json-schema.axonivy.com/app/12.0.0/variables.json
+Variables:
+  com:
+    axonivy:
+      demo:
+        patterndemos:
+          job:
+            # Cron/Quartz Pattern for demo job.
+            demoJobTimerConfiguration: "* * * * *"
+            # Change value to false to avoid error and admin task in the demo.
+            forceError: "false"

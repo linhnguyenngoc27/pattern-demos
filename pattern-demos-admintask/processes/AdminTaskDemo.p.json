@@ -1,0 +1,194 @@
+{
+  "$schema" : "https://json-schema.axonivy.com/process/12.0.0/process.json",
+  "id" : "1955AD96DBF7FE56",
+  "config" : {
+    "data" : "com.axonivy.demo.patterndemos.admintask.AdminTaskDemoData"
+  },
+  "elements" : [ {
+      "id" : "f0",
+      "type" : "RequestStart",
+      "name" : "Admin Task",
+      "config" : {
+        "signature" : "adminTaskDemo",
+        "request" : {
+          "name" : "Admin Task",
+          "description" : "Show how to handle errors in background processes."
+        }
+      },
+      "tags" : [
+        "demo"
+      ],
+      "visual" : {
+        "at" : { "x" : 96, "y" : 64 }
+      },
+      "connect" : [
+        { "id" : "f2", "to" : "f10" }
+      ]
+    }, {
+      "id" : "f1",
+      "type" : "TaskEnd",
+      "visual" : {
+        "at" : { "x" : 720, "y" : 64 },
+        "labelOffset" : { "x" : 13, "y" : 33 }
+      }
+    }, {
+      "id" : "f3",
+      "type" : "UserTask",
+      "name" : "AdminTask",
+      "config" : {
+        "dialog" : "com.axonivy.demo.patterndemos.admintask.AdminTask:start(String,String,List<com.axonivy.demo.patterndemos.admintask.enums.AdminDecision>)",
+        "call" : {
+          "map" : {
+            "param.task" : "in.task",
+            "param.details" : "in.details"
+          },
+          "code" : [
+            "import com.axonivy.demo.patterndemos.admintask.enums.AdminDecision;",
+            "",
+            "param.buttons = [AdminDecision.CHECK_LATER, AdminDecision.IGNORE, AdminDecision.RETRY];"
+          ]
+        },
+        "task" : {
+          "name" : "<%=in.task%>",
+          "category" : "ADMIN",
+          "responsible" : {
+            "activator" : "Administrator"
+          }
+        },
+        "output" : {
+          "map" : {
+            "out" : "in",
+            "out.adminDecision" : "result.decision"
+          }
+        }
+      },
+      "visual" : {
+        "at" : { "x" : 544, "y" : 176 }
+      },
+      "connect" : [
+        { "id" : "f7", "to" : "f4" }
+      ]
+    }, {
+      "id" : "f4",
+      "type" : "Alternative",
+      "name" : "decision?",
+      "config" : {
+        "conditions" : {
+          "f8" : "in.adminDecision == com.axonivy.demo.patterndemos.admintask.enums.AdminDecision.RETRY",
+          "f6" : ""
+        }
+      },
+      "visual" : {
+        "at" : { "x" : 672, "y" : 176 },
+        "labelOffset" : { "x" : 72, "y" : 8 }
+      },
+      "connect" : [
+        { "id" : "f6", "to" : "f1", "via" : [ { "x" : 672, "y" : 64 } ], "label" : {
+            "name" : "ignore",
+            "segment" : 1.31,
+            "offset" : { "x" : 15, "y" : 78 }
+          } },
+        { "id" : "f8", "to" : "f15", "via" : [ { "x" : 672, "y" : 240 }, { "x" : 288, "y" : 240 } ], "label" : {
+            "name" : "retry",
+            "segment" : 1.39,
+            "offset" : { "x" : 167, "y" : -26 }
+          } }
+      ]
+    }, {
+      "id" : "f10",
+      "type" : "TaskSwitchEvent",
+      "name" : "SYSTEM",
+      "config" : {
+        "task" : {
+          "name" : "Admin Task Demo Background Task",
+          "category" : "ADMIN",
+          "responsible" : {
+            "activator" : "SYSTEM"
+          }
+        }
+      },
+      "visual" : {
+        "at" : { "x" : 192, "y" : 64 },
+        "labelOffset" : { "x" : 14, "y" : 34 }
+      },
+      "connect" : [
+        { "id" : "f14", "to" : "f15" }
+      ]
+    }, {
+      "id" : "f5",
+      "type" : "Script",
+      "name" : "Simulate error",
+      "config" : {
+        "output" : {
+          "code" : [
+            "import ch.ivyteam.ivy.bpm.error.BpmError;",
+            "if(Boolean.parseBoolean(ivy.var.com_axonivy_demo_patterndemos_admintask_forceError)) {",
+            "  ivy.log.error(\"A forced error will be thrown. To avoid this, change the value of the global variable 'forceError' to false\");",
+            "  BpmError",
+            "    .create(\"com:axonivy:demo:patterndemos:admintask:error\")",
+            "    .withMessage(\"This error was forced.\")",
+            "    .throwError();",
+            "}",
+            "else {",
+            "  ivy.log.info(\"No error will be thrown. To test with throwing an error, change the value of the global variable 'forceError' to true\");",
+            "}"
+          ]
+        }
+      },
+      "visual" : {
+        "at" : { "x" : 416, "y" : 64 }
+      },
+      "boundaries" : [ {
+          "id" : "f11",
+          "type" : "ErrorBoundaryEvent",
+          "name" : "Collect error information",
+          "config" : {
+            "output" : {
+              "map" : {
+                "out" : "in",
+                "out.details" : "\"The simulated error's stacktrace:\\n\" + org.apache.commons.lang3.exception.ExceptionUtils.getStackTrace(error)",
+                "out.task" : "\"Check simulated error\""
+              }
+            }
+          },
+          "visual" : {
+            "at" : { "x" : 448, "y" : 104 },
+            "labelOffset" : { "x" : 97, "y" : 17 }
+          },
+          "connect" : [
+            { "id" : "f12", "to" : "f3", "via" : [ { "x" : 448, "y" : 176 } ] }
+          ]
+        } ],
+      "connect" : [
+        { "id" : "f13", "to" : "f1" }
+      ]
+    }, {
+      "id" : "f15",
+      "type" : "Alternative",
+      "visual" : {
+        "at" : { "x" : 288, "y" : 64 },
+        "labelOffset" : { "x" : 14, "y" : 34 }
+      },
+      "connect" : [
+        { "id" : "f16", "to" : "f5", "color" : "default" }
+      ]
+    }, {
+      "id" : "f9",
+      "type" : "ProcessAnnotation",
+      "name" : [
+        "This demo creates a \"background\" process run by system which causes an error.",
+        "",
+        "The error will be shown in an AdminTask where Administrator can decide, whether to retry the process or ignore the error.",
+        "",
+        "Before pressing retry, the error should be fixed manually. In this demo, the \"error\" can be fixed by setting the global variable 'forceError' to false and then retry.",
+        "",
+        "You can re-use the Dialog in your project and follow this pattern whenever you have to execute functionality in the background and want to be able to see and handle errors.",
+        "",
+        "Note, that the persist-flag must be set for the parameters 'task' and 'detail', so they are available, when the admin opens the task!"
+      ],
+      "visual" : {
+        "at" : { "x" : 1023, "y" : 183 },
+        "size" : { "width" : 411, "height" : 283 }
+      }
+    } ]
+}

@@ -1,0 +1,73 @@
+{
+  "$schema" : "https://json-schema.axonivy.com/process/12.0.0/process.json",
+  "id" : "195417CC8C3AF94C",
+  "config" : {
+    "data" : "com.axonivy.demo.patterndemos.primefacesextensions.PrimefacesExtensions.PrimefacesExtensionsData"
+  },
+  "elements" : [ {
+      "id" : "f0",
+      "type" : "RequestStart",
+      "name" : "Primefaces Extensions",
+      "config" : {
+        "signature" : "primefacesExtensionDemo",
+        "request" : {
+          "name" : "Primefaces Extensions",
+          "description" : "Show how to implement Primefaces Extensions."
+        }
+      },
+      "tags" : [
+        "demo"
+      ],
+      "visual" : {
+        "at" : { "x" : 96, "y" : 64 }
+      },
+      "connect" : [
+        { "id" : "f2", "to" : "f3" }
+      ]
+    }, {
+      "id" : "f1",
+      "type" : "TaskEnd",
+      "visual" : {
+        "at" : { "x" : 504, "y" : 64 },
+        "labelOffset" : { "x" : 13, "y" : 33 }
+      }
+    }, {
+      "id" : "f3",
+      "type" : "DialogCall",
+      "name" : "Demo of primefaces extension",
+      "config" : {
+        "dialog" : "com.axonivy.demo.patterndemos.primefacesextensions.PrimefacesExtensions:start()"
+      },
+      "visual" : {
+        "at" : { "x" : 288, "y" : 64 }
+      },
+      "connect" : [
+        { "id" : "f4", "to" : "f1", "color" : "default" }
+      ]
+    }, {
+      "id" : "f5",
+      "type" : "ProcessAnnotation",
+      "name" : [
+        "This demonstration illustrates how to enhance the functionality of the PrimeFaces InputText widget in two ways:",
+        "",
+        "* refining the logic of existing methods",
+        "* introducing new widget methods",
+        "",
+        "If you would like to extend or improve the functionality of a Primefaces component, follow these steps:",
+        "",
+        "* Create an extension Javascript at <PROJECT>/webContent/js/MyExtension.js",
+        "* Use the Client API documentation of Primefaces.",
+        "* In your pages add a link to your JavaScript:",
+        "        <h:outputScript name=\"js/MyExtension.js\"/>",
+        "",
+        "If you want to directly replace behaviour of existing widgets, you have to find first the original Javascript code of your widget:",
+        "",
+        "* Find the currently used Primefaces library. You should find it at <DESIGNER>/webapps/ivy/WEB-INF/lib/primefaces...jar",
+        "* Unpack this jar file (it is a zip file), and find the original javascript source of the component you want to change (typically at <JAR>/META-INF/resources/primefaces)"
+      ],
+      "visual" : {
+        "at" : { "x" : 907, "y" : 171 },
+        "size" : { "width" : 714, "height" : 282 }
+      }
+    } ]
+}

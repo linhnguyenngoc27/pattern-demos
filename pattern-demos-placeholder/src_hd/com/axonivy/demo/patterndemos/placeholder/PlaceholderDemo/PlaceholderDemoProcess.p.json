@@ -1,0 +1,57 @@
+{
+  "$schema" : "https://json-schema.axonivy.com/process/12.0.0/process.json",
+  "id" : "1956FF91FCB45561",
+  "kind" : "HTML_DIALOG",
+  "config" : {
+    "data" : "com.axonivy.demo.patterndemos.placeholder.PlaceholderDemo.PlaceholderDemoData"
+  },
+  "elements" : [ {
+      "id" : "f0",
+      "type" : "HtmlDialogStart",
+      "name" : "start()",
+      "config" : {
+        "signature" : "start",
+        "input" : {
+          "map" : { },
+          "code" : [
+            "import com.axonivy.demo.patterndemos.placeholder.ui.PlaceholderDemoCtrl;",
+            "out.ctrl = new PlaceholderDemoCtrl();"
+          ]
+        },
+        "guid" : "1956FF91FCB5DF18"
+      },
+      "visual" : {
+        "at" : { "x" : 96, "y" : 64 }
+      },
+      "connect" : [
+        { "id" : "f2", "to" : "f1" }
+      ]
+    }, {
+      "id" : "f1",
+      "type" : "HtmlDialogEnd",
+      "visual" : {
+        "at" : { "x" : 224, "y" : 64 },
+        "labelOffset" : { "x" : 10, "y" : 30 }
+      }
+    }, {
+      "id" : "f4",
+      "type" : "HtmlDialogExit",
+      "visual" : {
+        "at" : { "x" : 224, "y" : 160 },
+        "labelOffset" : { "x" : 10, "y" : 30 }
+      }
+    }, {
+      "id" : "f6",
+      "type" : "HtmlDialogEventStart",
+      "name" : "finish",
+      "config" : {
+        "guid" : "195700B39FB97DF5"
+      },
+      "visual" : {
+        "at" : { "x" : 96, "y" : 160 }
+      },
+      "connect" : [
+        { "id" : "f8", "to" : "f4" }
+      ]
+    } ]
+}

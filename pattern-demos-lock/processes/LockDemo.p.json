@@ -1,0 +1,277 @@
+{
+  "$schema" : "https://json-schema.axonivy.com/process/12.0.0/process.json",
+  "id" : "195662FB55BDFE65",
+  "config" : {
+    "data" : "com.axonivy.demo.patterndemos.lock.LockDemoData"
+  },
+  "elements" : [ {
+      "id" : "f0",
+      "type" : "RequestStart",
+      "name" : "Lock",
+      "config" : {
+        "signature" : "lockDemo",
+        "request" : {
+          "name" : "Lock",
+          "description" : "Lock the demo lock."
+        }
+      },
+      "tags" : [
+        "demo"
+      ],
+      "visual" : {
+        "at" : { "x" : 96, "y" : 400 }
+      },
+      "connect" : [
+        { "id" : "f2", "to" : "f9" }
+      ]
+    }, {
+      "id" : "f1",
+      "type" : "TaskEnd",
+      "visual" : {
+        "at" : { "x" : 528, "y" : 400 },
+        "labelOffset" : { "x" : 13, "y" : 33 }
+      }
+    }, {
+      "id" : "f9",
+      "type" : "Script",
+      "name" : "Lock the demo lock",
+      "config" : {
+        "output" : {
+          "code" : [
+            "import com.axonivy.demo.patterndemos.lock.service.LockService;",
+            "in.success = LockService.get().lock(\"demoLock\");"
+          ]
+        }
+      },
+      "visual" : {
+        "at" : { "x" : 232, "y" : 400 }
+      },
+      "connect" : [
+        { "id" : "f7", "to" : "f21" }
+      ]
+    }, {
+      "id" : "f8",
+      "type" : "RequestStart",
+      "name" : "Do Locked",
+      "config" : {
+        "signature" : "doLockedDemo",
+        "request" : {
+          "name" : "Do Locked",
+          "description" : "Do something locked."
+        }
+      },
+      "tags" : [
+        "demo"
+      ],
+      "visual" : {
+        "at" : { "x" : 96, "y" : 208 }
+      },
+      "connect" : [
+        { "id" : "f14", "to" : "f10" }
+      ]
+    }, {
+      "id" : "f11",
+      "type" : "DialogCall",
+      "name" : "See lock status",
+      "config" : {
+        "dialog" : "com.axonivy.demo.patterndemos.lock.LockDemo:start(String)",
+        "call" : {
+          "map" : {
+            "param.message" : "\"This dialog is shown in locked state. It cannot be shown again before unlocking.\""
+          }
+        }
+      },
+      "visual" : {
+        "at" : { "x" : 496, "y" : 144 }
+      },
+      "connect" : [
+        { "id" : "f16", "to" : "f12" }
+      ]
+    }, {
+      "id" : "f13",
+      "type" : "TaskEnd",
+      "visual" : {
+        "at" : { "x" : 864, "y" : 208 },
+        "labelOffset" : { "x" : 13, "y" : 33 }
+      }
+    }, {
+      "id" : "f3",
+      "type" : "RequestStart",
+      "name" : "Unlock",
+      "config" : {
+        "signature" : "unlockDemo",
+        "request" : {
+          "name" : "Unlock",
+          "description" : "Unlock the demo lock."
+        }
+      },
+      "tags" : [
+        "demo"
+      ],
+      "visual" : {
+        "at" : { "x" : 96, "y" : 544 }
+      },
+      "connect" : [
+        { "id" : "f6", "to" : "f4" }
+      ]
+    }, {
+      "id" : "f4",
+      "type" : "Script",
+      "name" : "Unlock the demo lock",
+      "config" : {
+        "output" : {
+          "code" : [
+            "import com.axonivy.demo.patterndemos.lock.service.LockService;",
+            "in.success = LockService.get().unlock(\"demoLock\");"
+          ]
+        }
+      },
+      "visual" : {
+        "at" : { "x" : 233, "y" : 544 }
+      },
+      "connect" : [
+        { "id" : "f20", "to" : "f5" }
+      ]
+    }, {
+      "id" : "f10",
+      "type" : "Script",
+      "name" : "Lock the demo lock",
+      "config" : {
+        "output" : {
+          "code" : [
+            "import com.axonivy.demo.patterndemos.lock.service.LockService;",
+            "in.success = LockService.get().lock(\"demoLock\");"
+          ]
+        }
+      },
+      "visual" : {
+        "at" : { "x" : 232, "y" : 208 }
+      },
+      "connect" : [
+        { "id" : "f15", "to" : "f23" }
+      ]
+    }, {
+      "id" : "f12",
+      "type" : "Script",
+      "name" : "Unlock the demo lock",
+      "config" : {
+        "output" : {
+          "code" : [
+            "import com.axonivy.demo.patterndemos.lock.service.LockService;",
+            "in.success = LockService.get().unlock(\"demoLock\");"
+          ]
+        }
+      },
+      "visual" : {
+        "at" : { "x" : 680, "y" : 144 }
+      },
+      "connect" : [
+        { "id" : "f17", "to" : "f13", "via" : [ { "x" : 800, "y" : 144 }, { "x" : 800, "y" : 208 } ] }
+      ]
+    }, {
+      "id" : "f21",
+      "type" : "DialogCall",
+      "name" : "Show status",
+      "config" : {
+        "dialog" : "com.axonivy.demo.patterndemos.lock.LockDemo:start(String)",
+        "call" : {
+          "map" : {
+            "param.message" : "in.success ? \"The lock is now set.\" : \"The lock was already set and could not be set again.\""
+          }
+        }
+      },
+      "visual" : {
+        "at" : { "x" : 392, "y" : 400 }
+      },
+      "connect" : [
+        { "id" : "f22", "to" : "f1", "color" : "default" }
+      ]
+    }, {
+      "id" : "f5",
+      "type" : "DialogCall",
+      "name" : "Show status",
+      "config" : {
+        "dialog" : "com.axonivy.demo.patterndemos.lock.LockDemo:start(String)",
+        "call" : {
+          "map" : {
+            "param.message" : "in.success ? \"The lock is now unset.\" : \"The lock could not be unlocked, look at the logs.\""
+          }
+        }
+      },
+      "visual" : {
+        "at" : { "x" : 392, "y" : 544 }
+      },
+      "connect" : [
+        { "id" : "f19", "to" : "f18", "color" : "default" }
+      ]
+    }, {
+      "id" : "f18",
+      "type" : "TaskEnd",
+      "visual" : {
+        "at" : { "x" : 528, "y" : 544 },
+        "labelOffset" : { "x" : 13, "y" : 33 }
+      }
+    }, {
+      "id" : "f23",
+      "type" : "Alternative",
+      "name" : "success?",
+      "config" : {
+        "conditions" : {
+          "f24" : "in.success"
+        }
+      },
+      "visual" : {
+        "at" : { "x" : 360, "y" : 208 },
+        "labelOffset" : { "x" : 64, "y" : 8 }
+      },
+      "connect" : [
+        { "id" : "f24", "to" : "f11", "via" : [ { "x" : 360, "y" : 144 } ], "label" : {
+            "name" : "yes",
+            "segment" : 1.17,
+            "offset" : { "x" : 5, "y" : 14 }
+          }, "color" : "default" },
+        { "id" : "f26", "to" : "f25", "via" : [ { "x" : 360, "y" : 264 } ], "label" : {
+            "name" : "no",
+            "segment" : 1.22,
+            "offset" : { "x" : 1, "y" : -10 }
+          } }
+      ]
+    }, {
+      "id" : "f25",
+      "type" : "DialogCall",
+      "name" : "See lock status",
+      "config" : {
+        "dialog" : "com.axonivy.demo.patterndemos.lock.LockDemo:start(String)",
+        "call" : {
+          "map" : {
+            "param.message" : "\"The lock could not be acquired. Wait until the other process finishes or unlock manually (if you know what you are doing).\""
+          }
+        }
+      },
+      "visual" : {
+        "at" : { "x" : 496, "y" : 264 }
+      },
+      "connect" : [
+        { "id" : "f27", "to" : "f13", "via" : [ { "x" : 800, "y" : 264 }, { "x" : 800, "y" : 208 } ] }
+      ]
+    }, {
+      "id" : "f28",
+      "type" : "ProcessAnnotation",
+      "name" : [
+        "Demo:",
+        "",
+        "* Start the \"doLocked\" process start and see, that a lock could be acquired only while nobody else has started doLocked.",
+        "* Use the \"lock\" process start to manually acquire the lock. ",
+        "* Use the \"unlock\" process start to manually unlock the lock.",
+        "",
+        "Notes:",
+        "",
+        "* This implementation uses persistence utils and an optimistic locked Lock table to create system-wide locks.",
+        "* The LockService class provides additional convenience functions to work with locks."
+      ],
+      "visual" : {
+        "at" : { "x" : 1008, "y" : 472 },
+        "size" : { "width" : 670, "height" : 206 }
+      }
+    } ]
+}

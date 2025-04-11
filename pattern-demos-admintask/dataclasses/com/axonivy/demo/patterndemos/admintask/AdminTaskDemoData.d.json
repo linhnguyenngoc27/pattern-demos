@@ -1,0 +1,18 @@
+{
+  "$schema" : "https://json-schema.axonivy.com/data-class/12.0.0/data-class.json",
+  "simpleName" : "AdminTaskDemoData",
+  "namespace" : "com.axonivy.demo.patterndemos.admintask",
+  "isBusinessCaseData" : false,
+  "fields" : [ {
+    "name" : "adminDecision",
+    "type" : "com.axonivy.demo.patterndemos.admintask.enums.AdminDecision"
+  }, {
+    "name" : "task",
+    "type" : "String",
+    "modifiers" : [ "PERSISTENT" ]
+  }, {
+    "name" : "details",
+    "type" : "String",
+    "modifiers" : [ "PERSISTENT" ]
+  } ]
+}

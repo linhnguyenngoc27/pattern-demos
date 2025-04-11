@@ -1,0 +1,56 @@
+{
+  "$schema" : "https://json-schema.axonivy.com/process/12.0.0/process.json",
+  "id" : "1957FF3DF72AF7B3",
+  "config" : {
+    "data" : "com.axonivy.demo.patterndemos.components.ComponentsDemoData"
+  },
+  "elements" : [ {
+      "id" : "f0",
+      "type" : "RequestStart",
+      "name" : "Components",
+      "config" : {
+        "signature" : "componentsDemo",
+        "request" : {
+          "name" : "Components",
+          "description" : "Demo how to set and and update components"
+        }
+      },
+      "tags" : [
+        "demo"
+      ],
+      "visual" : {
+        "at" : { "x" : 96, "y" : 64 }
+      },
+      "connect" : [
+        { "id" : "f2", "to" : "f3" }
+      ]
+    }, {
+      "id" : "f1",
+      "type" : "TaskEnd",
+      "visual" : {
+        "at" : { "x" : 528, "y" : 64 },
+        "labelOffset" : { "x" : 13, "y" : 33 }
+      }
+    }, {
+      "id" : "f3",
+      "type" : "DialogCall",
+      "name" : "Component demo",
+      "config" : {
+        "dialog" : "com.axonivy.demo.patterndemos.Parent:start()"
+      },
+      "visual" : {
+        "at" : { "x" : 312, "y" : 64 }
+      },
+      "connect" : [
+        { "id" : "f4", "to" : "f1", "color" : "default" }
+      ]
+    }, {
+      "id" : "f5",
+      "type" : "ProcessAnnotation",
+      "name" : "This demonstration illustrates the process of creating components with sub-components and updating them during a save operation, for example.",
+      "visual" : {
+        "at" : { "x" : 798, "y" : 48 },
+        "size" : { "width" : 355, "height" : 63 }
+      }
+    } ]
+}

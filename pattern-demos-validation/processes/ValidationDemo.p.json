@@ -1,0 +1,103 @@
+{
+  "$schema" : "https://json-schema.axonivy.com/process/12.0.0/process.json",
+  "id" : "19589A25A78319CA",
+  "config" : {
+    "data" : "com.axonivy.demo.patterndemos.validation.ValidationDemoData"
+  },
+  "elements" : [ {
+      "id" : "f0",
+      "type" : "RequestStart",
+      "name" : "Basic validation",
+      "config" : {
+        "signature" : "basicValidationDemo",
+        "request" : {
+          "name" : "<%=ivy.cms.co(\"/Processes/Names/basicValidationDemo\")%>",
+          "description" : "<%=ivy.cms.co(\"/Processes/Descriptions/basicValidationDemo\")%>"
+        }
+      },
+      "tags" : [
+        "demo"
+      ],
+      "visual" : {
+        "at" : { "x" : 192, "y" : 160 }
+      },
+      "connect" : [
+        { "id" : "f2", "to" : "f9" }
+      ]
+    }, {
+      "id" : "f1",
+      "type" : "TaskEnd",
+      "visual" : {
+        "at" : { "x" : 464, "y" : 160 },
+        "labelOffset" : { "x" : 13, "y" : 33 }
+      }
+    }, {
+      "id" : "f5",
+      "type" : "RequestStart",
+      "name" : "Server side validation",
+      "config" : {
+        "signature" : "serverSideValidationDemo",
+        "request" : {
+          "name" : "<%=ivy.cms.co(\"/Processes/Names/serverSideValidationDemo\")%>",
+          "description" : "<%=ivy.cms.co(\"/Processes/Descriptions/serverSideValidationDemo\")%>"
+        }
+      },
+      "tags" : [
+        "demo"
+      ],
+      "visual" : {
+        "at" : { "x" : 192, "y" : 312 }
+      },
+      "connect" : [
+        { "id" : "f7", "to" : "f10" }
+      ]
+    }, {
+      "id" : "f6",
+      "type" : "TaskEnd",
+      "visual" : {
+        "at" : { "x" : 464, "y" : 312 },
+        "labelOffset" : { "x" : 13, "y" : 33 }
+      }
+    }, {
+      "id" : "f10",
+      "type" : "DialogCall",
+      "name" : [
+        "Server side",
+        "validation"
+      ],
+      "config" : {
+        "dialog" : "com.axonivy.demo.patterndemos.validation.ServerSideValidation:start()"
+      },
+      "visual" : {
+        "at" : { "x" : 328, "y" : 312 }
+      },
+      "connect" : [
+        { "id" : "f8", "to" : "f6" }
+      ]
+    }, {
+      "id" : "f9",
+      "type" : "DialogCall",
+      "name" : "Basic validation",
+      "config" : {
+        "dialog" : "com.axonivy.demo.patterndemos.validation.BasicValidation:start()"
+      },
+      "visual" : {
+        "at" : { "x" : 328, "y" : 160 }
+      },
+      "connect" : [
+        { "id" : "f3", "to" : "f1" }
+      ]
+    }, {
+      "id" : "f4",
+      "type" : "ProcessAnnotation",
+      "name" : [
+        "Basic validation shows validation of a single field.",
+        "",
+        "Server side validation shows a more complex example using validators and model-based validation of multiple fields."
+      ],
+      "visual" : {
+        "at" : { "x" : 768, "y" : 160 },
+        "size" : { "width" : 350, "height" : 78 }
+      }
+    } ]
+}
