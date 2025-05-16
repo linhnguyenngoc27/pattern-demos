@@ -1,11 +1,51 @@
 # Pattern Demos
 
-***Note***: Pattern Demos are not a ready-to-use component but rather a collection of processes,
-dialogs, code or other snippets, which can be useful in your projects.
-If you want to use a pattern, copy the necessary parts to your project and adapt as needed. The demos are kept
-as simple as possible but some of the demos require additional infrastructure in your project.
+Pattern Demos are a collection of processes, dialogs, code, and other snippets that have proven useful in our projects and are shared publicly as best practices through this Market Extension.  
+To use a pattern, copy the necessary parts into your project and adapt them as needed. While the demos are kept as simple as possible, some may require additional infrastructure in your project.
+
+In detail, you will find solutions to the following typical problems:
+
+- **Admintask**: In case of errors in the process execution an admin gets a task and can decide how to proceed.
+- **Component**: This demo shows how different parts of a user interface can easily share and update the same data by connecting through a common controller, ensuring changes are always in sync.
+- **Lock**: Prevents multiple executions of a task
+- **Job**: This pattern helps you manage automated backend jobs in Axon Ivy, with options to start them manually and handle errors through admin tasks—making jobs easier to control, monitor, and recover from failures.
+- **Paralleltasks**: This pattern helps manage multiple tasks running at the same time.
+- **Placeholder**: Replace placeholders in text (like `{{name}}`) with real values using a built-in service.
+- **Primefaceextension**: Use these examples to see how Primefaces Widgets can be customized using the Primefaces client-side API of widgets.
+- **Validation**: Ensures user input is correct by checking required fields, valid values, and field combinations.
 
 ## Demo
+
+### Admin Task
+
+Use an Admin Task to catch errors in unattended backend-jobs. In case of errors,
+an admin role gets a task with the results and can decide whether the job should be retried or skipped.
+
+This demo creates a **background process** run by the system that intentionally triggers an error. The error is displayed in an **AdminTask**, where an administrator can choose to **retry** the process or **ignore** the error. Before retrying, the issue should be resolved manually. In this demo, the "error" can be fixed by setting the global variable `forceError` to `false` and then retrying.
+
+You can **reuse the dialog** in your own project and follow this pattern whenever you need to execute background functionality and want to handle errors visibly.
+
+> **Note:** Make sure the `persist` flag is set for the parameters `task` and `detail`, so they remain available when the administrator opens the task!
+
+![image](https://github.com/user-attachments/assets/82be6806-47d9-45f1-8a16-9af49908a871)
+
+
+### Components
+
+This demo shows a pattern to allow referencing a parent owned object in one or more child components.
+
+It uses Java based controllers which offer more flexibility than Ivy processes in complex UI scenarios.
+
+One object (in this example the `ParentCtrl`) owns a business object and implements a specific holder interface (in this example
+the `PersonHolder`) which allows getting and setting of the `Person` business object. Other controllers are created by the
+`ParentCtrl` and get a reference to the `ParentCtrl` (who is the `PersonHolder`). Therefore both controllers have access to the
+`Person`. This way a change in the component will automatically be reflected in the parent as well and vice versa. Note, that the
+automatic update will work even when a new instance of the `Person` is set by any component.
+
+Java controllers and similar patterns can be used for many complex situations (e.g. inheritance).
+
+![image](https://github.com/user-attachments/assets/edaa28ac-7ca3-48bb-934c-4d93ed61bba5)
+
 
 ### Lock
 
@@ -13,10 +53,8 @@ Use the LockService class to acquire system-wide locks for single-use actions. T
 is based on persistence-utils and needs a database connection. It saves locks in an optimistic
 locked entity to avoid race-conditions. 
 
-### Admin Task
+![image](https://github.com/user-attachments/assets/8e4d0b41-49ee-472e-82e5-9fa1007f7e70)
 
-Use an Admin Task to catch errors in unattended backend-jobs. In case of errors,
-an admin role gets a task with the results and can decide whether the job should be retried or skipped.
 
 ### Job
 
@@ -32,6 +70,8 @@ how a failure is simulated (using `forceError`), and how the AdminTask enables h
 Use this as a starting point to explore and customize the pattern for your needs.
 
 Note, that this pattern makes use of the `pattern-demos-lock` and the `pattern-demos-admintask` patterns.
+
+![image](https://github.com/user-attachments/assets/71c2623a-4b5d-4dc7-b8ec-2a98af621362)
 
 #### Triggering the Job
 
@@ -77,37 +117,6 @@ will only work, after the `JobDescription` is added to the repository. This can 
 ways (StartEventBean, static functions,...) and the demo shows a simple example using static
 initialization.
 
-### Placeholder Evaluation
-
-Use this basic ReplacementService directly in your project or just as a start to implement your own
-text-based place-holder replacement.
-
-Notes:
-
-* Ivy allows the use of placeholders or script output already in certain elements.
-* DocFactory and Aspose implement mergefields or mustache placeholders in Word files.
-* Existing Java-based placeholder libraries can be added to an Ivy project.
-
-### Primefaces Extensions
-
-Use these examples to see how Primefaces Widgets can be customized using the Primefaces client-side API of widgets.
-
-This demonstration illustrates how to enhance the functionality of the PrimeFaces InputText widget in two ways: by refining the logic of its existing methods and by introducing new methods to the widget.
-
-### Components
-
-This demo shows a pattern to allow referencing a parent owned object in one or more child components.
-
-It uses Java based controllers which offer more flexibility than Ivy processes in complex UI scenarios.
-
-One object (in this example the `ParentCtrl`) owns a business object and implements a specific holder interface (in this example
-the `PersonHolder`) which allows getting and setting of the `Person` business object. Other controllers are created by the
-`ParentCtrl` and get a reference to the `ParentCtrl` (who is the `PersonHolder`). Therefore both controllers have access to the
-`Person`. This way a change in the component will automatically be reflected in the parent as well and vice versa. Note, that the
-automatic update will work even when a new instance of the `Person` is set by any component.
-
-Java controllers and similar patterns can be used for many complex situations (e.g. inheritance).
-
 ### Parallel Tasks
 
 The parallel tasks pattern is designed to manage a dynamic number of concurrent tasks. The task group is assigned
@@ -126,6 +135,34 @@ in the current group. In real word scenarios, business objects might represent t
 or more complex handling after finishing might be required (e.g. canceling of tasks because of a business
 condition) and therefore the pattern needs to be adapted to your requirements.
 
+![image](https://github.com/user-attachments/assets/ad38ff79-0c8e-4a3a-a200-f58dd02e3aa8)
+
+
+### Placeholder Evaluation
+
+Use this basic ReplacementService directly in your project or just as a start to implement your own
+text-based place-holder replacement.
+
+![image](https://github.com/user-attachments/assets/05cf2627-ff7b-4a84-8fe0-6905132b3f61)
+
+After clicking "Replace" the following text has been generated:
+
+![image](https://github.com/user-attachments/assets/8ff0476d-d55b-4f93-aa54-6503246b228a)
+
+Notes:
+
+* Ivy allows the use of placeholders or script output already in certain elements.
+* DocFactory and Aspose implement mergefields or mustache placeholders in Word files.
+* Existing Java-based placeholder libraries can be added to an Ivy project.
+
+### Primefaces Extensions
+
+Use these examples to see how Primefaces Widgets can be customized using the Primefaces client-side API of widgets.
+This demonstration illustrates how to enhance the functionality of the PrimeFaces InputText widget in two ways: by refining the logic of its existing methods and by introducing new methods to the widget.
+
+![image](https://github.com/user-attachments/assets/5cd39912-9bb6-4c76-91bc-8d8eccff38d6)
+
+
 ### Validation
 
 The validation pattern shows some typical validation scenarios for
@@ -134,10 +171,13 @@ The validation pattern shows some typical validation scenarios for
 * a field value validation
 * a multi-field validation with model mapping and server side logic
 
+  Basic validation:
+  ![image](https://github.com/user-attachments/assets/18ce21cc-6714-45c3-b02b-d1859f34c481)
+
+
 #### Managed beans
 
 The managed bean `messages` is used as an elegant way to re-use custom CMS messages for multiple fields.
-
 The managed bean `constants` is used as an elegant way to re-use project constants in the code and in the UI.
 
 ## Setup
