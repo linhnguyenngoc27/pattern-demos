@@ -234,5 +234,7 @@ After the file is uploaded:
 
 
   Pdf Viewer Demo:
-![image](https://github.com/user-attachments/assets/f408081e-e40c-4f22-8425-5812f1334160)
+![PdfViewerDemo](https://github.com/user-attachments/assets/4beeac58-264f-42d2-9b1d-7465e4535eac)
+
+
 
