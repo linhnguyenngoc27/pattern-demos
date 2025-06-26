@@ -17,10 +17,10 @@ public class FileController {
 	@Path("/{fileName}")
 	@Consumes(MediaType.APPLICATION_JSON)
 	@Produces({ MediaType.APPLICATION_OCTET_STREAM, MediaType.APPLICATION_JSON })	
-	public Response getQueryDocumentContent(@PathParam("fileName") String filename) {
+	public Response getQueryDocumentContent(@PathParam("fileName") String fileName) {
 			
 		FileService service = new FileService();
-		return service.getFileContent(filename);
+		return service.getFileContent(fileName);
 	}
 	
 }
