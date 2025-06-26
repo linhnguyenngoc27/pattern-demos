@@ -1,0 +1,71 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:f="http://xmlns.jcp.org/jsf/core"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+	xmlns:ic="http://ivyteam.ch/jsf/component"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:pe="http://primefaces.org/ui/extensions">
+
+<h:body>
+	<ui:composition>
+
+		<p:dataTable id="fileTable" widgetVar="fileTableWidget"
+			value="#{data.ctrl.files}" var="file" selectionMode="single"
+			resizableColumns="true" sortMode="single" rowKey="#{file.name}">
+
+			<p:ajax event="rowSelect" listener="#{data.ctrl.onRowSelect}" process="@this" update="form:fileView" />
+
+			<p:column headerText="File">
+				<h:outputLink value="#{ivy.html.fileLink(file).toAbsoluteUri()}"
+					target="_blank"> #{file.name} </h:outputLink>
+			</p:column>
+
+			<p:column headerText="Actions" width="150px">
+
+				<p:commandLink id="download-#{file.name}" styleClass="mr-2"
+					title="Download file" actionListener="#{logic.download(file)}" process="@this">
+					<h:outputText class="fa-solid fa-download" />
+					<p:fileDownload value="#{data.fileContent}" />
+				</p:commandLink>
+
+				<p:commandLink id="viewAsStreamedContent-#{file.name}"
+					styleClass="mr-2" title="View pdf as streamed content"
+					actionListener="#{logic.view(file, 'DOCUMENT_VIEWER_STREAM')}"
+					process="@this" update="form:fileView">
+					<h:outputText class="fa-solid fa-eye" />
+				</p:commandLink>
+
+				<p:commandLink id="viewAsUrl-#{file.name}" styleClass="mr-2"
+					title="View pdf as url"
+					actionListener="#{logic.view(file, 'DOCUMENT_VIEWER_URL')}"
+					process="@this" update="form:fileView">
+					<h:outputText class="fa-solid fa-eye" style="color: #B197FC;" />
+				</p:commandLink>
+
+				<p:commandLink id="viewAsUrlInIFrame-#{file.name}" styleClass="mr-2"
+					title="View pdf as url in iframe"
+					actionListener="#{logic.view(file, 'IFRAME_URL')}" process="@this"
+					update="form:fileView">
+					<h:outputText class="fa-solid fa-eye" style="color: #74C0FC;" />
+				</p:commandLink>
+
+				<p:commandLink id="viewAsUrlInMedia-#{file.name}" styleClass="mr-2"
+					title="View pdf as url in media"
+					actionListener="#{logic.view(file, 'MEDIA_URL')}" process="@this"
+					update="form:fileView">
+					<h:outputText class="fa-solid fa-eye" style="color: #63E6BE;" />
+				</p:commandLink>
+
+				<p:commandLink id="viewAsApiLink-#{file.name}" styleClass="mr-2"
+					title="View pdf as url API in media"
+					actionListener="#{logic.view(file, 'API_LINK')}" process="@this"
+					update="form:fileView">
+					<h:outputText class="fa-solid fa-eye" style="color: #FFD43B;" />
+				</p:commandLink>
+
+			</p:column>
+		</p:dataTable>
+
+	</ui:composition>
+</h:body>
+</html>
