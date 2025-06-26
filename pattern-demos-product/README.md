@@ -223,4 +223,16 @@ If you want to directly replace behaviour of existing widgets, you have to find 
 
 ***Note***: If you modify the logic of a component, you should verify its functionality with each Ivy update, as these updates often include PrimeFaces updates that could result in compatibility issues.
 
+### Pdf Viewer Demo
+
+This demo show an examples how to view pdf with multiple otptions
+You can upload files pdf from computer
+After the file is uploaded:
+	- On the left side: you can download it, choose show content file pdf with multiple option by many eyes icon:
+		View pdf as streamed content, View pdf as url, View pdf as url in iframe, View pdf as url in media, View pdf as url API in media
+	- On the right page will show content of file pdf
+
+
+  Pdf Viewer Demo:
+![image](https://github.com/user-attachments/assets/f408081e-e40c-4f22-8425-5812f1334160)
 
