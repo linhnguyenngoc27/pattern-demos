@@ -46,7 +46,7 @@ With iframe, it only support view pdf file from url.
 
 ```
 
-### 6. Using an api link to get file content and embeded it in any pdf viewer component above ###
+### 6. Using an API to get streamed content file selected; then use this streamed content file in order to embedded in any pdf viewer component above ###
 ```java	
 String apilink = Ivy.html().applicationHomeLink().getAbsolute()
 this.url = String.format("%s/api/appservices/file/%s", aplink, file.getName());

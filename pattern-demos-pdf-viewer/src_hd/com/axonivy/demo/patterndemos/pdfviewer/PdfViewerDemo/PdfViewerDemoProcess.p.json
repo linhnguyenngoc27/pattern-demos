@@ -1,9 +1,9 @@
 {
   "$schema" : "https://json-schema.axonivy.com/process/12.0.0/process.json",
-  "id" : "197AA7C6842A9793",
+  "id" : "197B0EFDCD05C6AE",
   "kind" : "HTML_DIALOG",
   "config" : {
-    "data" : "pattern.demos.pdf.viewer.PdfViewer.PdfViewerData"
+    "data" : "com.axonivy.demo.patterndemos.pdfviewer.PdfViewerDemo.PdfViewerDemoData"
   },
   "elements" : [ {
       "id" : "f0",
@@ -11,7 +11,7 @@
       "name" : "start()",
       "config" : {
         "signature" : "start",
-        "guid" : "197AA7C6844B9B0F"
+        "guid" : "197B0EFDCD167BD5"
       },
       "visual" : {
         "at" : { "x" : 96, "y" : 64 }
@@ -23,7 +23,7 @@
       "id" : "f1",
       "type" : "HtmlDialogEnd",
       "visual" : {
-        "at" : { "x" : 352, "y" : 64 },
+        "at" : { "x" : 408, "y" : 64 },
         "labelOffset" : { "x" : 10, "y" : 30 }
       }
     }, {
@@ -31,7 +31,7 @@
       "type" : "HtmlDialogEventStart",
       "name" : "close",
       "config" : {
-        "guid" : "197AA7C6856D9507"
+        "guid" : "197B0EFDCD3D114D"
       },
       "visual" : {
         "at" : { "x" : 96, "y" : 160 }
@@ -56,7 +56,7 @@
         }
       },
       "visual" : {
-        "at" : { "x" : 224, "y" : 64 }
+        "at" : { "x" : 256, "y" : 64 }
       },
       "connect" : [
         { "id" : "f7", "to" : "f1", "color" : "default" }
@@ -78,21 +78,14 @@
             "out.fileContent = out.ctrl.fileContent;"
           ]
         },
-        "guid" : "197AA82119DAD00B"
+        "guid" : "197B0F1DF0C67F49"
       },
       "visual" : {
-        "at" : { "x" : 96, "y" : 256 }
+        "at" : { "x" : 96, "y" : 248 }
       },
       "connect" : [
         { "id" : "f10", "to" : "f9" }
       ]
-    }, {
-      "id" : "f9",
-      "type" : "HtmlDialogEnd",
-      "visual" : {
-        "at" : { "x" : 288, "y" : 256 },
-        "labelOffset" : { "x" : 10, "y" : 30 }
-      }
     }, {
       "id" : "f11",
       "type" : "HtmlDialogMethodStart",
@@ -106,10 +99,10 @@
           "map" : { },
           "code" : "out.fileContent = out.ctrl.getDownloadFile(param.file);"
         },
-        "guid" : "197AA8337946B2AA"
+        "guid" : "197B0F1DF0C71377"
       },
       "visual" : {
-        "at" : { "x" : 96, "y" : 360 }
+        "at" : { "x" : 96, "y" : 352 }
       },
       "connect" : [
         { "id" : "f13", "to" : "f12" }
@@ -118,7 +111,14 @@
       "id" : "f12",
       "type" : "HtmlDialogEnd",
       "visual" : {
-        "at" : { "x" : 288, "y" : 360 },
+        "at" : { "x" : 288, "y" : 352 },
+        "labelOffset" : { "x" : 10, "y" : 30 }
+      }
+    }, {
+      "id" : "f9",
+      "type" : "HtmlDialogEnd",
+      "visual" : {
+        "at" : { "x" : 288, "y" : 248 },
         "labelOffset" : { "x" : 10, "y" : 30 }
       }
     } ]

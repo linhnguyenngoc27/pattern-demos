@@ -1,15 +1,15 @@
 {
   "$schema" : "https://json-schema.axonivy.com/process/12.0.0/process.json",
-  "id" : "197AA7AB0AEB90A6",
+  "id" : "197B0ED7F3F76716",
   "config" : {
-    "data" : "pattern.demos.pdf.viewer.PdfViewerDemoData"
+    "data" : "com.axonivy.demo.patterndemos.pdfviewer.PdfViewerDemoData"
   },
   "elements" : [ {
       "id" : "f0",
       "type" : "RequestStart",
-      "name" : "ViewPdf",
+      "name" : "start",
       "config" : {
-        "signature" : "ViewPdf"
+        "signature" : "start"
       },
       "visual" : {
         "at" : { "x" : 96, "y" : 64 }
@@ -29,7 +29,7 @@
       "type" : "DialogCall",
       "name" : "Pdf Viewer",
       "config" : {
-        "dialog" : "pattern.demos.pdf.viewer.PdfViewer:start()"
+        "dialog" : "com.axonivy.demo.patterndemos.pdfviewer.PdfViewerDemo:start()"
       },
       "visual" : {
         "at" : { "x" : 224, "y" : 64 }
