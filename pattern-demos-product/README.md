@@ -226,17 +226,18 @@ If you want to directly replace behaviour of existing widgets, you have to find 
 ### Pdf Viewer Demo
 
 The uploaded documents are stored in the directory (../workspaces/work/designer/files-yyyymmdd-xxx/application) and displayed in a table.\
-In case it's downloaded or displayed, the PDF content is streamed to the corresponding PrimeFaces component.\
+In case it's downloaded or displayed, the PDF content is streamed to the corresponding PrimeFaces component.
 
-To display the PDF, two different components are demonstrated:\
+To display the PDF, two different components are demonstrated:
 * Document Viewer
 * Media
 
-The Document Viewer component is available as a PrimeFaces extension, whereas the Media feature is included in the main PrimeFaces package. The features and UX of both components are different.
+The Document Viewer component is available as a PrimeFaces extension, whereas the Media feature is included in the main PrimeFaces package. The features and UX of both components are different.\
 Prioritize using Media over Document Viewer, because Media executes faster. In cases where you want to use more features, such as editing documents, then use Document Viewer.
 
   Pdf Viewer Demo:
-![PdfViewerDemo](https://github.com/user-attachments/assets/4e5d1941-b6d4-4129-ae51-2f65786e6a40)
+![PdfViewerDemo](https://github.com/user-attachments/assets/eb5328b9-1d33-44a6-b722-24a2b24d9469)
+
 
 
 
