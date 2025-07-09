@@ -11,7 +11,7 @@
       "config" : {
         "signature" : "viewFilePdfDemo",
         "request" : {
-          "name" : "View File Pdf",
+          "name" : "View PDF document",
           "description" : "View content file pdf after upload"
         }
       },
