@@ -225,13 +225,11 @@ If you want to directly replace behaviour of existing widgets, you have to find 
 
 ### Pdf Viewer Demo
 
-This demo show an examples how to view pdf with multiple otptions
-You can upload files pdf from computer
-After the file is uploaded:
-	- On the left side: you can download it, choose show content file pdf with multiple option by many eyes icon:
-		View pdf as streamed content, View pdf as url, View pdf as url in iframe, View pdf as url in media, View pdf as url API in media
-	- On the right page will show content of file pdf
-
+This demo shows an example of how to view a PDF with two options after the PDF file is uploaded:
+	On the left side, you can download it and choose to view the PDF content using two options represented by the two eye icons:
+		- View PDF as p:media
+		- View PDF using pe:documentViewer
+	On the right side of the page will display the content of the PDF file.
 
   Pdf Viewer Demo:
 ![PdfViewerDemo](https://github.com/user-attachments/assets/4beeac58-264f-42d2-9b1d-7465e4535eac)
