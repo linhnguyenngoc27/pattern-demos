@@ -11,8 +11,16 @@
 		<ui:define name="content">
 
 			<h:outputStylesheet name="pdf-view.css" library="ivy-dialog" />
-
+			
 			<h:form id="form">
+				<div class="shortDescriptionOverView">
+					<h1>Display PDF file content in 2 ways.</h1>
+					<ol>
+						<li><strong>Use &lt;pe:documentViewer&gt;:</strong> View the PDF file with many features similar to those of document opening tools, and prioritize using this way.</li>
+						<li><strong>Use &lt;p:media&gt;:</strong> View the PDF file with some basic features, but the processing speed will be faster.</li>
+					</ol>
+				</div>
+				
 				<p:fieldset>
 					<div class="formgrid grid">
 						<div class="field col-12 md:col-5 document-view enable-scroll-y">
@@ -23,7 +31,7 @@
 									<p:fileUpload id="btnAdd" label="Upload" mode="simple"
 										skinSimple="true" auto="true" chooseIcon="fa-solid fa-plus"
 										styleClass="upload-file" listener="#{data.ctrl.onUploadFile}"
-										update="fileManagement fileView" sizeLimit="10000000"
+										update="fileManagement fileView" sizeLimit="1000000000"
 										allowTypes="/(\.|\/)(pdf)$/" validateContentType="true">
 									</p:fileUpload>
 								</div>
@@ -31,33 +39,15 @@
 						</div>
 
 						<div class="field col-12 md:col-7 document-view">
-							<h:panelGroup id="fileView">
-								<!-- View document by StreamedContent Streamed Content -->
+							<h:panelGroup id="fileView" >
+								<p:media rendered="#{data.ctrl.viewType eq 'MEDIA'}"
+									value="#{data.ctrl.fileContent}" width="100%" height="100%" player="pdf" cache="false"/>
+									
 								<pe:documentViewer
-									rendered="#{data.ctrl.viewType eq 'DOCUMENT_VIEWER_STREAM'}"
-									value="#{data.fileContent}"
+									rendered="#{data.ctrl.viewType eq 'DOCUMENT_VIEWER'}"
+									value="#{data.ctrl.fileContent}"
 									download="#{data.ctrl.selectedFile.name}" width="100%"
 									height="100%" />
-
-								<!-- View document by url -->
-								<pe:documentViewer
-									rendered="#{data.ctrl.viewType eq 'DOCUMENT_VIEWER_URL'}"
-									value="#{data.ctrl.url}"
-									download="#{data.ctrl.selectedFile.name}" width="100%"
-									height="100%" />
-
-								<!-- View document by url in iframe-->
-								<h:panelGroup rendered="#{data.ctrl.viewType eq 'IFRAME_URL'}">
-									<iframe src="#{data.ctrl.url}"
-										name="#{data.ctrl.selectedFile.name}" width="100%"
-										height="100%" />
-								</h:panelGroup>
-
-								<p:media rendered="#{data.ctrl.viewType eq 'MEDIA_URL'}"
-									value="#{data.ctrl.url}" width="100%" height="100%" />
-
-								<p:media rendered="#{data.ctrl.viewType eq 'API_LINK'}"
-									value="#{data.ctrl.url}" width="100%" height="100%" />
 
 							</h:panelGroup>
 						</div>

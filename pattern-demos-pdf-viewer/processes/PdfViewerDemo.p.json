@@ -7,10 +7,16 @@
   "elements" : [ {
       "id" : "f0",
       "type" : "RequestStart",
-      "name" : "start",
+      "name" : "View File Pdf",
       "config" : {
-        "signature" : "start"
+        "signature" : "viewFilePdfDemo",
+        "request" : {
+          "name" : "View File Pdf"
+        }
       },
+      "tags" : [
+        "demo"
+      ],
       "visual" : {
         "at" : { "x" : 96, "y" : 64 }
       },

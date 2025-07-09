@@ -25,6 +25,11 @@ public class PdfViewerCtrl {
 	private String url;
 	private StreamedContent fileContent;
 
+	public PdfViewerCtrl() {
+		this.files = new ArrayList<>();
+		this.viewType = ViewType.MEDIA;
+		this.selectedFile = null;
+	}
 	public List<File> getFiles() {
 		return files;
 	}
@@ -69,12 +74,6 @@ public class PdfViewerCtrl {
 		onViewFile(event.getObject(), viewType);
     }
 
-	public void init() {
-		this.files = new ArrayList<>();
-		this.viewType = ViewType.DOCUMENT_VIEWER_URL;
-		this.selectedFile = null;
-	}
-
 	public void onUploadFile(FileUploadEvent event) {
 		File file = storeFile(event.getFile());
 		onViewFile(file, viewType);
@@ -84,17 +83,8 @@ public class PdfViewerCtrl {
 	public void onViewFile(File file, ViewType viewType) {
 		this.selectedFile = file;
 		this.viewType = viewType;
+		fileContent = createStreamedContent(this.selectedFile);
 
-		if (ViewType.API_LINK == this.viewType) {
-			this.url = String.format("%s/api/appservices/file/%s", Ivy.html().applicationHomeLink().getAbsolute(),
-					file.getName());
-		} else {
-			this.url = Ivy.html().fileLink(this.selectedFile).toAbsoluteUri().toString();
-		}
-
-		if (ViewType.DOCUMENT_VIEWER_STREAM == this.viewType) {
-			fileContent = createStreamedContent(this.selectedFile);
-		}
 	}
 
 	public StreamedContent getDownloadFile(File file) {
@@ -125,8 +115,11 @@ public class PdfViewerCtrl {
 
 		try {
 			InputStream inputStream = new FileInputStream(file.getJavaFile());
-			StreamedContent streamedContent = DefaultStreamedContent.builder().name(file.getName())
-					.stream(() -> inputStream).build();
+			StreamedContent streamedContent = DefaultStreamedContent.builder()
+					.contentType("application/pdf")
+					.name(file.getName())
+					.stream(() -> inputStream)
+					.build();
 			return streamedContent;
 		} catch (Exception e) {
 			Ivy.log().error("Error when streaming file {0} is error {1}", e, file.getName(), e.getMessage());

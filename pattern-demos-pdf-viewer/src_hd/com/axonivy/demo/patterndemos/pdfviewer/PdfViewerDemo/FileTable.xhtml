@@ -25,42 +25,21 @@
 				<p:commandLink id="download-#{file.name}" styleClass="mr-2"
 					title="Download file" actionListener="#{logic.download(file)}" process="@this">
 					<h:outputText class="fa-solid fa-download" />
-					<p:fileDownload value="#{data.fileContent}" />
+					<p:fileDownload value="#{data.contentFileDownload}" />
 				</p:commandLink>
 
-				<p:commandLink id="viewAsStreamedContent-#{file.name}"
-					styleClass="mr-2" title="View pdf as streamed content"
-					actionListener="#{logic.view(file, 'DOCUMENT_VIEWER_STREAM')}"
+				<p:commandLink id="viewAsMedia-#{file.name}" styleClass="mr-2"
+					title="View pdf as media"
+					actionListener="#{logic.view(file, 'MEDIA')}"
 					process="@this" update="form:fileView">
-					<h:outputText class="fa-solid fa-eye" />
-				</p:commandLink>
-
-				<p:commandLink id="viewAsUrl-#{file.name}" styleClass="mr-2"
-					title="View pdf as url"
-					actionListener="#{logic.view(file, 'DOCUMENT_VIEWER_URL')}"
-					process="@this" update="form:fileView">
-					<h:outputText class="fa-solid fa-eye" style="color: #B197FC;" />
-				</p:commandLink>
-
-				<p:commandLink id="viewAsUrlInIFrame-#{file.name}" styleClass="mr-2"
-					title="View pdf as url in iframe"
-					actionListener="#{logic.view(file, 'IFRAME_URL')}" process="@this"
-					update="form:fileView">
-					<h:outputText class="fa-solid fa-eye" style="color: #74C0FC;" />
-				</p:commandLink>
-
-				<p:commandLink id="viewAsUrlInMedia-#{file.name}" styleClass="mr-2"
-					title="View pdf as url in media"
-					actionListener="#{logic.view(file, 'MEDIA_URL')}" process="@this"
-					update="form:fileView">
 					<h:outputText class="fa-solid fa-eye" style="color: #63E6BE;" />
 				</p:commandLink>
-
-				<p:commandLink id="viewAsApiLink-#{file.name}" styleClass="mr-2"
-					title="View pdf as url API in media"
-					actionListener="#{logic.view(file, 'API_LINK')}" process="@this"
-					update="form:fileView">
-					<h:outputText class="fa-solid fa-eye" style="color: #FFD43B;" />
+				
+				<p:commandLink id="viewAsDocumentViewer-#{file.name}" styleClass="mr-2"
+					title="View pdf as document viewer"
+					actionListener="#{logic.view(file, 'DOCUMENT_VIEWER')}"
+					process="@this" update="form:fileView">
+					<h:outputText class="fa-solid fa-eye" />
 				</p:commandLink>
 
 			</p:column>

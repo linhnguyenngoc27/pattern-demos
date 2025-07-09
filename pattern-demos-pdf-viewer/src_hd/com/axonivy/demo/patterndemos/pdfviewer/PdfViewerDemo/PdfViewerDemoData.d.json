@@ -8,7 +8,7 @@
     "type" : "com.axonivy.demo.patterndemos.pdfviewer.ui.PdfViewerCtrl",
     "modifiers" : [ "PERSISTENT" ]
   }, {
-    "name" : "fileContent",
+    "name" : "contentFileDownload",
     "type" : "org.primefaces.model.StreamedContent",
     "modifiers" : [ "PERSISTENT" ]
   } ]

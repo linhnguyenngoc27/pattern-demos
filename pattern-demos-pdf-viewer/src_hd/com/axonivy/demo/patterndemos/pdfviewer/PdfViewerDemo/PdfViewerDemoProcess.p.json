@@ -11,19 +11,27 @@
       "name" : "start()",
       "config" : {
         "signature" : "start",
+        "input" : {
+          "map" : { },
+          "code" : [
+            "import com.axonivy.demo.patterndemos.pdfviewer.ui.PdfViewerCtrl;",
+            "",
+            "out.ctrl = new PdfViewerCtrl();"
+          ]
+        },
         "guid" : "197B0EFDCD167BD5"
       },
       "visual" : {
         "at" : { "x" : 96, "y" : 64 }
       },
       "connect" : [
-        { "id" : "f2", "to" : "f6" }
+        { "id" : "f2", "to" : "f1" }
       ]
     }, {
       "id" : "f1",
       "type" : "HtmlDialogEnd",
       "visual" : {
-        "at" : { "x" : 408, "y" : 64 },
+        "at" : { "x" : 288, "y" : 64 },
         "labelOffset" : { "x" : 10, "y" : 30 }
       }
     }, {
@@ -43,24 +51,9 @@
       "id" : "f4",
       "type" : "HtmlDialogExit",
       "visual" : {
-        "at" : { "x" : 224, "y" : 160 },
+        "at" : { "x" : 288, "y" : 160 },
         "labelOffset" : { "x" : 10, "y" : 30 }
       }
-    }, {
-      "id" : "f6",
-      "type" : "Script",
-      "name" : "Init data",
-      "config" : {
-        "output" : {
-          "code" : "in.ctrl.init();"
-        }
-      },
-      "visual" : {
-        "at" : { "x" : 256, "y" : 64 }
-      },
-      "connect" : [
-        { "id" : "f7", "to" : "f1", "color" : "default" }
-      ]
     }, {
       "id" : "f8",
       "type" : "HtmlDialogMethodStart",
@@ -73,10 +66,7 @@
             { "name" : "viewType", "type" : "com.axonivy.demo.patterndemos.pdfviewer.enums.ViewType", "desc" : "" }
           ],
           "map" : { },
-          "code" : [
-            "out.ctrl.onViewFile(param.file, param.viewType);",
-            "out.fileContent = out.ctrl.fileContent;"
-          ]
+          "code" : "out.ctrl.onViewFile(param.file, param.viewType);"
         },
         "guid" : "197B0F1DF0C67F49"
       },
@@ -97,7 +87,7 @@
             { "name" : "file", "type" : "File", "desc" : "" }
           ],
           "map" : { },
-          "code" : "out.fileContent = out.ctrl.getDownloadFile(param.file);"
+          "code" : "out.contentFileDownload = out.ctrl.getDownloadFile(param.file);"
         },
         "guid" : "197B0F1DF0C71377"
       },
