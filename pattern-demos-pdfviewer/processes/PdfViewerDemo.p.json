@@ -7,12 +7,12 @@
   "elements" : [ {
       "id" : "f0",
       "type" : "RequestStart",
-      "name" : "View File Pdf",
+      "name" : "View Pdf File",
       "config" : {
-        "signature" : "viewFilePdfDemo",
+        "signature" : "viewPdfFileDemo",
         "request" : {
           "name" : "View PDF document",
-          "description" : "View content file pdf after upload"
+          "description" : "Upload a PDF file and show it in the UI."
         }
       },
       "tags" : [
