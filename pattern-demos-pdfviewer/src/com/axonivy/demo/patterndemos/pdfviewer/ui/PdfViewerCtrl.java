@@ -1,7 +1,6 @@
 package com.axonivy.demo.patterndemos.pdfviewer.ui;
 
-import java.io.FileInputStream;
-import java.io.IOException;
+import java.io.ByteArrayInputStream;
 import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.List;
@@ -10,18 +9,18 @@ import org.primefaces.event.FileUploadEvent;
 import org.primefaces.event.SelectEvent;
 import org.primefaces.model.DefaultStreamedContent;
 import org.primefaces.model.StreamedContent;
-import org.primefaces.model.file.UploadedFile;
 
 import com.axonivy.demo.patterndemos.pdfviewer.enums.ViewType;
+import com.axonivy.demo.patterndemos.pdfviewer.model.PdfFile;
 
 import ch.ivyteam.ivy.environment.Ivy;
-import ch.ivyteam.ivy.scripting.objects.Binary;
-import ch.ivyteam.ivy.scripting.objects.File;
+
 
 public class PdfViewerCtrl {
-	private List<File> files;
+	private List<PdfFile> files;
+
 	private ViewType viewType;
-	private File selectedFile;
+	private PdfFile selectedFile;
 	private String url;
 	private StreamedContent fileContent;
 
@@ -30,11 +29,12 @@ public class PdfViewerCtrl {
 		this.viewType = ViewType.MEDIA;
 		this.selectedFile = null;
 	}
-	public List<File> getFiles() {
+
+	public List<PdfFile> getFiles() {
 		return files;
 	}
 
-	public void setFiles(List<File> files) {
+	public void setFiles(List<PdfFile> files) {
 		this.files = files;
 	}
 
@@ -46,11 +46,11 @@ public class PdfViewerCtrl {
 		this.viewType = viewType;
 	}
 
-	public File getSelectedFile() {
+	public PdfFile getSelectedFile() {
 		return selectedFile;
 	}
 
-	public void setSelectedFile(File selectedFile) {
+	public void setSelectedFile(PdfFile selectedFile) {
 		this.selectedFile = selectedFile;
 	}
 
@@ -70,51 +70,41 @@ public class PdfViewerCtrl {
 		this.fileContent = fileContent;
 	}
 	
-	public void onRowSelect(SelectEvent<File> event) {
+	public void onRowSelect(SelectEvent<PdfFile> event) {
 		onViewFile(event.getObject(), viewType);
     }
 
 	public void onUploadFile(FileUploadEvent event) {
-		File file = storeFile(event.getFile());
-		onViewFile(file, viewType);
-		files.add(file);
+		PdfFile pdfFile = convertToFilePdf(event.getFile().getFileName(), event.getFile().getContent());
+		onViewFile(pdfFile, viewType);
+		files.add(pdfFile);
 	}
 
-	public void onViewFile(File file, ViewType viewType) {
+	public void onViewFile(PdfFile file, ViewType viewType) {
 		this.selectedFile = file;
 		this.viewType = viewType;
 		fileContent = createStreamedContent(this.selectedFile);
 
 	}
 
-	public StreamedContent getDownloadFile(File file) {
+	public StreamedContent getDownloadFile(PdfFile file) {
 		return createStreamedContent(file);
 	}
 
-	private File storeFile(UploadedFile uploadedFile) {
-
-		try {
-
-			// The file will be store at
-			// ../workspaces/work/designer/files-yyyymmdd-???/application
-
-			File file = new File(uploadedFile.getFileName());
-			file.writeBinary(new Binary(uploadedFile.getContent()));
-
-			return file;
-		} catch (IOException e) {
-			Ivy.log().error("Error when storing file {0}", e, uploadedFile.getFileName());
-		}
-		return null;
+	private PdfFile convertToFilePdf(String name, byte[] content) {
+		PdfFile pdfFile = new PdfFile();
+		pdfFile.setName(name);
+		pdfFile.setContent(content);
+		return pdfFile;
 	}
 
-	private StreamedContent createStreamedContent(File file) {
-		if (file == null) {
+	private StreamedContent createStreamedContent(PdfFile file) {
+		if (file.getContent() == null) {
 			return null;
 		}
 
 		try {
-			InputStream inputStream = new FileInputStream(file.getJavaFile());
+			InputStream inputStream = new ByteArrayInputStream(file.getContent());
 			StreamedContent streamedContent = DefaultStreamedContent.builder()
 					.contentType("application/pdf")
 					.name(file.getName())

@@ -57,12 +57,12 @@
     }, {
       "id" : "f8",
       "type" : "HtmlDialogMethodStart",
-      "name" : "view(File,ViewType)",
+      "name" : "view(PdfFile,ViewType)",
       "config" : {
         "signature" : "view",
         "input" : {
           "params" : [
-            { "name" : "file", "type" : "File", "desc" : "" },
+            { "name" : "file", "type" : "com.axonivy.demo.patterndemos.pdfviewer.model.PdfFile", "desc" : "" },
             { "name" : "viewType", "type" : "com.axonivy.demo.patterndemos.pdfviewer.enums.ViewType", "desc" : "" }
           ],
           "map" : { },
@@ -79,12 +79,12 @@
     }, {
       "id" : "f11",
       "type" : "HtmlDialogMethodStart",
-      "name" : "download(File)",
+      "name" : "download(PdfFile)",
       "config" : {
         "signature" : "download",
         "input" : {
           "params" : [
-            { "name" : "file", "type" : "File", "desc" : "" }
+            { "name" : "file", "type" : "com.axonivy.demo.patterndemos.pdfviewer.model.PdfFile", "desc" : "" }
           ],
           "map" : { },
           "code" : "out.contentFileDownload = out.ctrl.getDownloadFile(param.file);"

@@ -225,7 +225,7 @@ If you want to directly replace behaviour of existing widgets, you have to find 
 
 ### Pdf Viewer Demo
 
-The uploaded documents are stored in the directory (../workspaces/work/designer/files-yyyymmdd-xxx/application) and displayed in a table.\
+The uploaded documents are stored in the memory and displayed in a table.\
 In case it's downloaded or displayed, the PDF content is streamed to the corresponding PrimeFaces component.
 
 To display the PDF, two different components are demonstrated:

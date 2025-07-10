@@ -16,8 +16,7 @@
 			<p:ajax event="rowSelect" listener="#{data.ctrl.onRowSelect}" process="@this" update="form:fileView" />
 
 			<p:column headerText="File">
-				<h:outputLink value="#{ivy.html.fileLink(file).toAbsoluteUri()}"
-					target="_blank"> #{file.name} </h:outputLink>
+				<p> #{file.name} </p>
 			</p:column>
 
 			<p:column headerText="Actions" width="150px">
