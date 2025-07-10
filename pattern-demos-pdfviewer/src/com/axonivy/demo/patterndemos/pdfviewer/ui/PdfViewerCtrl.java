@@ -75,7 +75,7 @@ public class PdfViewerCtrl {
     }
 
 	public void onUploadFile(FileUploadEvent event) {
-		PdfFile pdfFile = convertToFilePdf(event.getFile().getFileName(), event.getFile().getContent());
+		PdfFile pdfFile = convertToPdfFile(event.getFile().getFileName(), event.getFile().getContent());
 		onViewFile(pdfFile, viewType);
 		files.add(pdfFile);
 	}
@@ -91,7 +91,7 @@ public class PdfViewerCtrl {
 		return createStreamedContent(file);
 	}
 
-	private PdfFile convertToFilePdf(String name, byte[] content) {
+	private PdfFile convertToPdfFile(String name, byte[] content) {
 		PdfFile pdfFile = new PdfFile();
 		pdfFile.setName(name);
 		pdfFile.setContent(content);
