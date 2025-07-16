@@ -13,6 +13,7 @@ In detail, you will find solutions to the following typical problems:
 - **Placeholder**: Replace placeholders in text (like `{{name}}`) with real values using a built-in service.
 - **Primefaceextension**: Use these examples to see how Primefaces Widgets can be customized using the Primefaces client-side API of widgets.
 - **Validation**: Ensures user input is correct by checking required fields, valid values, and field combinations.
+- **ZIP**: This demo shows an example of how to use the zip feature.
 
 ## Demo
 
@@ -174,11 +175,22 @@ The validation pattern shows some typical validation scenarios for
   Basic validation:
   ![image](https://github.com/user-attachments/assets/18ce21cc-6714-45c3-b02b-d1859f34c481)
 
-
 #### Managed beans
 
 The managed bean `messages` is used as an elegant way to re-use custom CMS messages for multiple fields.
 The managed bean `constants` is used as an elegant way to re-use project constants in the code and in the UI.
+
+### Zip Demo
+
+This demo shows an example of how to use the zip feature. 
+
+You can upload files from your computer. They will be processed and automatically added to an existing zip file. If no ZIP file exists, a new one will be created.
+
+Click the Download button to download the ZIP file containing all the files you uploaded.
+
+You can also click "Unpack" to extract all the files to your local Designer folder.
+
+![image](images/zip-demo.jpg)
 
 ## Setup
 

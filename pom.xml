@@ -20,6 +20,7 @@
 		<module>${project.name}-product</module>
 		<module>${project.name}-test</module>
 		<module>${project.name}-validation</module>
+		<module>${project.name}-zip</module>
 		<module>${project.name}-pdfviewer</module>
 	</modules>
 
