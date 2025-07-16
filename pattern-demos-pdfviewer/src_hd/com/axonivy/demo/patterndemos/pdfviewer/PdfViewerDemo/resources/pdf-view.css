@@ -1,0 +1,7 @@
+.document-view {
+	height: 75vh;
+}
+
+.enable-scroll-y {
+	overflow-y: auto;
+}

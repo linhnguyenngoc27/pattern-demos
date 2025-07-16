@@ -1,0 +1,48 @@
+{
+  "$schema" : "https://json-schema.axonivy.com/process/12.0.0/process.json",
+  "id" : "197B0ED7F3F76716",
+  "config" : {
+    "data" : "com.axonivy.demo.patterndemos.pdfviewer.PdfViewerDemoData"
+  },
+  "elements" : [ {
+      "id" : "f0",
+      "type" : "RequestStart",
+      "name" : "View Pdf File",
+      "config" : {
+        "signature" : "viewPdfFileDemo",
+        "request" : {
+          "name" : "View PDF document",
+          "description" : "Upload a PDF file and show it in the UI."
+        }
+      },
+      "tags" : [
+        "demo"
+      ],
+      "visual" : {
+        "at" : { "x" : 96, "y" : 64 }
+      },
+      "connect" : [
+        { "id" : "f2", "to" : "f3" }
+      ]
+    }, {
+      "id" : "f1",
+      "type" : "TaskEnd",
+      "visual" : {
+        "at" : { "x" : 352, "y" : 64 },
+        "labelOffset" : { "x" : 13, "y" : 33 }
+      }
+    }, {
+      "id" : "f3",
+      "type" : "DialogCall",
+      "name" : "Pdf Viewer",
+      "config" : {
+        "dialog" : "com.axonivy.demo.patterndemos.pdfviewer.PdfViewerDemo:start()"
+      },
+      "visual" : {
+        "at" : { "x" : 224, "y" : 64 }
+      },
+      "connect" : [
+        { "id" : "f4", "to" : "f1", "color" : "default" }
+      ]
+    } ]
+}

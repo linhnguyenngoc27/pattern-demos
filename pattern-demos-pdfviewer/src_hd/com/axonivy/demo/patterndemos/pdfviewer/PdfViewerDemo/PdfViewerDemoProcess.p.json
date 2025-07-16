@@ -1,0 +1,115 @@
+{
+  "$schema" : "https://json-schema.axonivy.com/process/12.0.0/process.json",
+  "id" : "197B0EFDCD05C6AE",
+  "kind" : "HTML_DIALOG",
+  "config" : {
+    "data" : "com.axonivy.demo.patterndemos.pdfviewer.PdfViewerDemo.PdfViewerDemoData"
+  },
+  "elements" : [ {
+      "id" : "f0",
+      "type" : "HtmlDialogStart",
+      "name" : "start()",
+      "config" : {
+        "signature" : "start",
+        "input" : {
+          "map" : { },
+          "code" : [
+            "import com.axonivy.demo.patterndemos.pdfviewer.ui.PdfViewerCtrl;",
+            "",
+            "out.ctrl = new PdfViewerCtrl();"
+          ]
+        },
+        "guid" : "197B0EFDCD167BD5"
+      },
+      "visual" : {
+        "at" : { "x" : 96, "y" : 64 }
+      },
+      "connect" : [
+        { "id" : "f2", "to" : "f1" }
+      ]
+    }, {
+      "id" : "f1",
+      "type" : "HtmlDialogEnd",
+      "visual" : {
+        "at" : { "x" : 288, "y" : 64 },
+        "labelOffset" : { "x" : 10, "y" : 30 }
+      }
+    }, {
+      "id" : "f3",
+      "type" : "HtmlDialogEventStart",
+      "name" : "close",
+      "config" : {
+        "guid" : "197B0EFDCD3D114D"
+      },
+      "visual" : {
+        "at" : { "x" : 96, "y" : 160 }
+      },
+      "connect" : [
+        { "id" : "f5", "to" : "f4" }
+      ]
+    }, {
+      "id" : "f4",
+      "type" : "HtmlDialogExit",
+      "visual" : {
+        "at" : { "x" : 288, "y" : 160 },
+        "labelOffset" : { "x" : 10, "y" : 30 }
+      }
+    }, {
+      "id" : "f8",
+      "type" : "HtmlDialogMethodStart",
+      "name" : "view(PdfFile,ViewType)",
+      "config" : {
+        "signature" : "view",
+        "input" : {
+          "params" : [
+            { "name" : "file", "type" : "com.axonivy.demo.patterndemos.pdfviewer.model.PdfFile", "desc" : "" },
+            { "name" : "viewType", "type" : "com.axonivy.demo.patterndemos.pdfviewer.enums.ViewType", "desc" : "" }
+          ],
+          "map" : { },
+          "code" : "out.ctrl.onViewFile(param.file, param.viewType);"
+        },
+        "guid" : "197B0F1DF0C67F49"
+      },
+      "visual" : {
+        "at" : { "x" : 96, "y" : 248 }
+      },
+      "connect" : [
+        { "id" : "f10", "to" : "f9" }
+      ]
+    }, {
+      "id" : "f11",
+      "type" : "HtmlDialogMethodStart",
+      "name" : "download(PdfFile)",
+      "config" : {
+        "signature" : "download",
+        "input" : {
+          "params" : [
+            { "name" : "file", "type" : "com.axonivy.demo.patterndemos.pdfviewer.model.PdfFile", "desc" : "" }
+          ],
+          "map" : { },
+          "code" : "out.contentFileDownload = out.ctrl.getDownloadFile(param.file);"
+        },
+        "guid" : "197B0F1DF0C71377"
+      },
+      "visual" : {
+        "at" : { "x" : 96, "y" : 352 }
+      },
+      "connect" : [
+        { "id" : "f13", "to" : "f12" }
+      ]
+    }, {
+      "id" : "f12",
+      "type" : "HtmlDialogEnd",
+      "visual" : {
+        "at" : { "x" : 288, "y" : 352 },
+        "labelOffset" : { "x" : 10, "y" : 30 }
+      }
+    }, {
+      "id" : "f9",
+      "type" : "HtmlDialogEnd",
+      "visual" : {
+        "at" : { "x" : 288, "y" : 248 },
+        "labelOffset" : { "x" : 10, "y" : 30 }
+      }
+    } ]
+}

@@ -223,4 +223,22 @@ If you want to directly replace behaviour of existing widgets, you have to find 
 
 ***Note***: If you modify the logic of a component, you should verify its functionality with each Ivy update, as these updates often include PrimeFaces updates that could result in compatibility issues.
 
+### PDF Viewer Demo
+
+The uploaded documents are stored in the memory and displayed in a table.
+In case it's downloaded or displayed, the PDF content is streamed to the corresponding PrimeFaces component.
+
+To display the PDF, two different components are demonstrated:
+* Document Viewer
+* Media
+
+The Document Viewer component is available as a PrimeFaces extension, whereas the Media feature is included in the main PrimeFaces package. The features and UX of both components are different.
+Prioritize using Media over Document Viewer, because Media executes faster. In cases where you want to use more features, such as editing documents, then use Document Viewer.
+
+  PDF Viewer Demo:
+![PdfViewerDemo](https://github.com/user-attachments/assets/eb5328b9-1d33-44a6-b722-24a2b24d9469)
+
+
+
+
 
